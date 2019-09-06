@@ -2,7 +2,7 @@
 
 **Project Status:** Active
 
-** Links: **
+**Links:**
 [The Legal Aid Justice Center](justice4all.org)
 
 [Code for Charlottesville](codeforcharlottesville.org)

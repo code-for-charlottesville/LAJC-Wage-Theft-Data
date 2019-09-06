@@ -19,16 +19,19 @@
 
 **Phases:**
 
-* Phase 1: generate cleaned versions of the data and find answers to the following questions:
-
-   1. What percent of cases does the VDOL close right off the bat? What percent of claims never get an investigation opened? And why? 
-
-   2. If a case is opened, how long is a case open for? Does it depend on the amount of money claimed? If so, how much? If they say “we recovered so much money for workers,” is that possibly all coming from one case? What is the real distribution of outcomes? 
-
-   3. What’s the probability of success for submitting a claim? And what does that probability depend on?
-
-   4. Use the crowdsourcing we can provide to categorize the businesses into industrial groups
-
+| Goal                                                                    | Timing                   | Status      | Location                     |
+|-------------------------------------------------------------------------|--------------------------|-------------|------------------------------|
+| Categorize every business into an industry group                        | 9/17, 10/1, 10/15, 10/29 | In progress | https://tinyurl.com/yy8ww8pr |
+| Pre-process data                                                        | 9/17, 10/1               | In progress |                              |
+| Determine what percent of cases does the VDOL closes right off the bat  | 9/17, 10/1               |             |                              |
+| Determine what percent of claims never get an investigation opened      |                          |             |                              |
+|                                                                         |                          |             |                              |
+|                                                                         |                          |             |                              |
+|                                                                         |                          |             |                              |
+|                                                                         |                          |             |                              |
+|                                                                         |                          |             |                              |
+|                                                                         |                          |             |                              |
+|                                                                         |                          |             |                              |
 
 ## Introduction and Objective
 Wage theft occurs when

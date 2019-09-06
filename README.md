@@ -2,9 +2,9 @@
 
 **Project Status:** Active
 
-[][<justice4all.org>
+!()[<justice4all.org>
 
-[]<codeforcharlottesville.org>
+!()<codeforcharlottesville.org>
 
 ## Introduction and Objective
 Wage theft occurs when

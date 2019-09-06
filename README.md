@@ -2,9 +2,9 @@
 
 **Project Status:** Active
 
-!()[<justice4all.org>
+[The Legal Aid Justice Center](justice4all.org)
 
-!()<codeforcharlottesville.org>
+[Code for Charlottesville](codeforcharlottesville.org)
 
 ## Introduction and Objective
 Wage theft occurs when

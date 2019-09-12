@@ -15,8 +15,6 @@
 
 * Tuesday, Oct 15, 6:30-9pm, Dell 1, UVA
 
-* Tuesday, Oct 29, 6:30-9pm, Center for Civic Innovation 
-
 **Phases:**
 
 | Goal                                                                    | Timing                   | Status      | Location                     |

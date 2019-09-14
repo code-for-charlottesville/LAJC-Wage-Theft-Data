@@ -22,10 +22,10 @@ The following table describes each variable in the raw data:
 |hispanic                               | Whether the complainant is **predicted** to be Hispanic based on the last name           | Logical: (TRUE, FALSE)      | Race/Ethnicity is not included in the original data. We predicted the race/ethnicity of each complainant from the person's last name using the `predict_race()` function in the `wru` package in R.     |
 |asian                                  | Whether the complainant is **predicted** to be Asian based on the last name           | Logical: (TRUE, FALSE)       | See above     |
 |CLAIM AMT                              | The amount of money claimed to have been illegally withheld           | Character (but easily converted to numeric)      |      |
-|CASE OPEN/RE-OPEN                      |            |       |      |
-|CLAIM RECEIVED                         |            |       |      |
-|Valid                                  |            |       |      |
-|Informal Resolution                    |            |       |      |
+|CASE OPEN/RE-OPEN                      | The date the case was opened           | Character      |      |
+|CLAIM RECEIVED                         | The date the claim was received by DOLI           | Character      |      |
+|Valid                                  | Whether the claim was deemed by DOLI to be valid           | Character: X if valid, missing if not      |      |
+|Informal Resolution                    | Whether the claim was resulted in an informal resolution between the employer and complainant           | Character: X if valid, missing if not       |      |
 |Bankrupt                               |            |       |      |
 |Invalid                                |            |       |      |
 |Fringe Benefits                        |            |       |      |

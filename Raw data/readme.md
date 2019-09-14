@@ -69,15 +69,15 @@ The following table describes each variable in the raw data:
 |INTEREST AMT                           | Amount recovered in interest on lost wages for the complainant           | Character (but easily converted to numeric)      |      |
 |ATTY FEES                              | Amount recovered in reimbursed attorney fees for the complainant           | Character (but easily converted to numeric)      |      |
 |DATE FOR WAGES                         | Date wages were returned to the complainant           | Character      |      |
-|WAGES APPEALED                         |            | Character: X if true, missing if false      |      |
-|WAGES APPEAL CIRCUIT COURT DATE        |            | Character: X if true, missing if false      |      |
+|WAGES APPEALED                         |            | All missing      |      |
+|WAGES APPEAL CIRCUIT COURT DATE        |            | All missing      |      |
 |ASSESSED                               |            | Character: X if true, missing if false      |      |
 |AMT                                    |            | Character (but easily converted to numeric)      |      |
 |ATTY FEES_1                            |            | Character (but easily converted to numeric)      |      |
 |ASSESSED DATE                          |            | Character      |      |
 |TOTAL CMP AMT                          |            | Character (but easily converted to numeric)      |      |
-|CMP APPEALED                           |            | Character: X if true, missing if false      |      |
-|CMP APPEAL CIRCUIT COURT DATE          |            | Character      |      |
+|CMP APPEALED                           |            | All missing    |      |
+|CMP APPEAL CIRCUIT COURT DATE          |            | All missing      |      |
 |FINES & COURT COSTS                    |            | Character (but easily converted to numeric)      |      |
 |TOTAL WAGES                            |            | Character (but easily converted to numeric)      |      |
 |TOTAL INTEREST AMT                     |            | Character (but easily converted to numeric)      |      |
@@ -85,18 +85,18 @@ The following table describes each variable in the raw data:
 |GARNISHED AMT                          |            | Character (but easily converted to numeric)      |      |
 |JUDGMENT WAGE AMT                      |            | Character (but easily converted to numeric)      |      |
 |JUDGEMENT PENALTY AMT                  |            | Character (but easily converted to numeric)      |      |
-|DOCKETED/SENT FOR COLLECTION DATE      |            | Character      |      |
-|ACTION TAKEN                           |            | Character: X if true, missing if false      |      |
-|COURT DATE                             |            | Character     |      |
-|CONVICTED - DISPOSITION                |            | Character: X if true, missing if false      |      |
-|DISMISSED - DISPOSITION                |            | Character: X if true, missing if false      |      |
-|NOL Prossed                            |            | Character: X if true, missing if false      |      |
-|CONFINEMENT                            |            | Character: X if true, missing if false      |      |
-|SUSPENSION                             |            | Character: X if true, missing if false      |      |
-|BOTH - C&F                             |            | Character: X if true, missing if false      |      |
-|JUDGMENT_2                             |            | Character: X if true, missing if false      |      |
-|DISMISSED_2                            |            | Character: X if true, missing if false      |      |
-|NON-SUITED_2                           |            | Character: X if true, missing if false      |      |
-|JUDGMENT_3                             |            | Character: X if true, missing if false      |      |
-|DISMISSED_3                            |            | Character: X if true, missing if false      |      |
-|NON-SUITED_3                           |            | Character: X if true, missing if false      |      |
+|DOCKETED/SENT FOR COLLECTION DATE      |            | All missing      |      |
+|ACTION TAKEN                           |            | All missing      |      |
+|COURT DATE                             |            | All missing     |      |
+|CONVICTED - DISPOSITION                |            | All missing     |      |
+|DISMISSED - DISPOSITION                |            | All missing      |      |
+|NOL Prossed                            |            | All missing      |      |
+|CONFINEMENT                            |            | All missing      |      |
+|SUSPENSION                             |            | All missing      |      |
+|BOTH - C&F                             |            | All missing     |      |
+|JUDGMENT_2                             |            | All missing      |      |
+|DISMISSED_2                            |            | All missing      |      |
+|NON-SUITED_2                           |            | All missing      |      |
+|JUDGMENT_3                             |            | All missing      |      |
+|DISMISSED_3                            |            | All missing      |      |
+|NON-SUITED_3                           |            | All missing      |      |

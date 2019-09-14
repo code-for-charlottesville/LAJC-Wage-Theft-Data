@@ -4,12 +4,12 @@
 |:--------------------------------------|:-----------|:------|:-----|
 |CLAIM NO                               | A unique ID for each official wage-theft complaint issued to the VDOL           |       |      |
 |COMPLAINT                              | Whether or not this row represents an official complaint           | X if yes      | All rows are complaints, so safe to ignore this variable     |
-|ROUTINE                                |            |       |      |
-|EMPLOYER NAME                          |            |       |      |
-|EMPLOYER CITY                          |            |       |      |
-|ST                                     |            |       |      |
-|ZIP                                    |            |       |      |
-|gender                                 |            |       |      |
+|ROUTINE                                |            |       | Missing everywhere, safe to ignore     |
+|EMPLOYER NAME                          | The name of the employer against whom the wage-theft complaint is made           | Character      |      |
+|EMPLOYER CITY                          | The employer's city           | Character       |      |
+|ST                                     | The employer's state            | Character      |      |
+|ZIP                                    | The employer's ZIP code            | Character      |      |
+|gender                                 | The **predicted** gender of the person issuing the complaint           | Factor: (male, female)      | Gender is not included in the original data, but the complainants' names are. We used the `gender_df()` function in the `gender` package for R to predict gender from the complainants' first names. This variable is missing if the first name is unusual and `gender_df()` is unable to generate a prediction      |
 |hispanic                               |            |       |      |
 |asian                                  |            |       |      |
 |CLAIM AMT                              |            |       |      |

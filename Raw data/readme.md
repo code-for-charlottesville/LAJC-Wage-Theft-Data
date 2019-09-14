@@ -71,20 +71,20 @@ The following table describes each variable in the raw data:
 |DATE FOR WAGES                         | Date wages were returned to the complainant           | Character      |      |
 |WAGES APPEALED                         |            | All missing      |      |
 |WAGES APPEAL CIRCUIT COURT DATE        |            | All missing      |      |
-|ASSESSED                               |            | Character: X if true, missing if false      |      |
-|AMT                                    |            | Character (but easily converted to numeric)      |      |
-|ATTY FEES_1                            |            | Character (but easily converted to numeric)      |      |
-|ASSESSED DATE                          |            | Character      |      |
-|TOTAL CMP AMT                          |            | Character (but easily converted to numeric)      |      |
-|CMP APPEALED                           |            | All missing    |      |
-|CMP APPEAL CIRCUIT COURT DATE          |            | All missing      |      |
-|FINES & COURT COSTS                    |            | Character (but easily converted to numeric)      |      |
-|TOTAL WAGES                            |            | Character (but easily converted to numeric)      |      |
-|TOTAL INTEREST AMT                     |            | Character (but easily converted to numeric)      |      |
-|TOT WAGES & INTEREST                   |            | Character (but easily converted to numeric)      |      |
-|GARNISHED AMT                          |            | Character (but easily converted to numeric)      |      |
-|JUDGMENT WAGE AMT                      |            | Character (but easily converted to numeric)      |      |
-|JUDGEMENT PENALTY AMT                  |            | Character (but easily converted to numeric)      |      |
+|ASSESSED                               | Whether the DOLI investigation concludes the employer owes a civil monetary penalty            | Character: X if true, missing if false      | A civil monentary penalty (CMP) is a fine an employer must pay as punishment for wage-theft, in addition to paying back wages and fees     |
+|AMT                                    | Amount of the CMP owed by the employer           | Character (but easily converted to numeric)      | See above     |
+|ATTY FEES_1                            | Attorney fees owed by the employer as part of the CMP           | Character (but easily converted to numeric)      | See above     |
+|ASSESSED DATE                          | Date CMP totals were assessed           | Character      | See above     |
+|TOTAL CMP AMT                          | CMP + attorney fees           | Character (but easily converted to numeric)      | See above     |
+|CMP APPEALED                           |            | All missing    | See above     |
+|CMP APPEAL CIRCUIT COURT DATE          |            | All missing      | See above     |
+|FINES & COURT COSTS                    | Other fines and court costs associated with the CMP           | Character (but easily converted to numeric)      | See above     |
+|TOTAL WAGES                            | Total wages that the DOLI says have been actually collected           | Character (but easily converted to numeric)      | *We're not sure what to make of these "collection" variables at this point.* After a legal order for an employer to repay wages, the case is referred to a colection agency or to an attorney in charge of collection. These values indicate the amount that has been collected. It includes amounts that have been legally ordered, and amounts that were settled upon in civil court or outside DOLI jurisdiction.     |
+|TOTAL INTEREST AMT                     | Total interest collected           | Character (but easily converted to numeric)      | See above     |
+|TOT WAGES & INTEREST                   | Wages + interest collected           | Character (but easily converted to numeric)      | See above     |
+|GARNISHED AMT                          |            | All $0      |      |
+|JUDGMENT WAGE AMT                      | We think these are additional fees for repeat offenders           | Character (but easily converted to numeric)      |      |
+|JUDGEMENT PENALTY AMT                  | We think these are additional fees for repeat offenders            | Character (but easily converted to numeric)      |      |
 |DOCKETED/SENT FOR COLLECTION DATE      |            | All missing      |      |
 |ACTION TAKEN                           |            | All missing      |      |
 |COURT DATE                             |            | All missing     |      |

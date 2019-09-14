@@ -1,4 +1,13 @@
-## Raw data
+## Virginia Department of Labor and Industry (DOLI) Wage Claim Data
+The raw data is stored in `lajc_wage-claim.csv`. It contains 3,948 rows -- each row is one Payment of Wage Claim, an official complaint that a worker in Virginia can issue to the DOLI if they believe their employer has illegally withheld their wages. See (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/) for more information about issuing a wage-claim. The data contains information regarding who each claim is made against, the amount of the claim, whether DOLI opened an investiagtion, and if so, whether they were able to return any wages to the complainant and how much.
+
+Prior to posting the raw data on GitHub we edited it to 
+
+* Remove the name, address, state, and ZIP code of the people who issued the complaints
+
+* Add variables that use census data to predict the likely gender of each complainant, as well as whether or not each complainant is likely to be Hispanic or Asian
+
+The following table describes each variable in the raw data:
 
 |Variable                               |Description |Values |Notes |
 |:--------------------------------------|:-----------|:------|:-----|
@@ -12,7 +21,7 @@
 |gender                                 | The **predicted** gender of the person issuing the complaint based on first name          | Factor: (male, female)      | Gender is not included in the original data, but the complainants' names are. We used the `gender_df()` function in the `gender` package for R to predict gender from the complainants' first names. This variable is missing if the first name is unusual and `gender_df()` is unable to generate a prediction      |
 |hispanic                               | Whether the complainant is **predicted** to be Hispanic based on the last name           | Logical: (TRUE, FALSE)      | Race/Ethnicity is not included in the original data. We predicted the race/ethnicity of each complainant from the person's last name using the `predict_race()` function in the `wru` package in R.     |
 |asian                                  | Whether the complainant is **predicted** to be Asian based on the last name           | Logical: (TRUE, FALSE)       | See above     |
-|CLAIM AMT                              |            |       |      |
+|CLAIM AMT                              | The amount of money claimed to have been illegally withheld           | Character (but easily converted to numeric)      |      |
 |CASE OPEN/RE-OPEN                      |            |       |      |
 |CLAIM RECEIVED                         |            |       |      |
 |Valid                                  |            |       |      |

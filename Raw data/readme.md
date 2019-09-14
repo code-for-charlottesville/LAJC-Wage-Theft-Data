@@ -26,14 +26,14 @@ The following table describes each variable in the raw data:
 |CLAIM RECEIVED                         | The date the claim was received by DOLI           | Character      |      |
 |Valid                                  | Whether the claim was deemed by DOLI to be valid           | Character: X if valid, missing if not      |      |
 |Informal Resolution                    | Whether the claim was resulted in an informal resolution between the employer and complainant           | Character: X if true, missing if false       |      |
-|Bankrupt                               |            |       |      |
-|Invalid                                |            |       |      |
-|Fringe Benefits                        |            |       |      |
-|Independent Agent                      |            |       |      |
-|Subcontractor                          |            |       |      |
-|False Claim                            |            |       |      |
-|Other                                  |            |       |      |
-|CLAIM INVAL OTHER DESCRIPTION          |            |       |      |
+|Bankrupt                               | Whether the claim is being made against a bankrupt employer           | Character: X if true, missing if false       | This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)      |
+|Invalid                                | Whether DOLI disqualified the claim for one of the following reasons:            | Character: X if true, missing if false      |      |
+|Fringe Benefits                        | Whether DOLI disqualified the claim because it deals with contractual payments beyond a base salary           | Character: X if true, missing if false      | This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)       |
+|Independent Agent                      | Whether DOLI disqualified the claim because it involves a contract worker instead of a direct employee           | Character: X if true, missing if false      | This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)       |
+|Subcontractor                          | Whether DOLI disqualified the claim because it involves a subcontract worker instead of a direct employee           | Character: X if true, missing if false      | This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)       |
+|False Claim                            | Whether DOLI determined that the claim is false           | Character: X if true, missing if false      |      |
+|Other                                  | Whether DOLI determined that the claim is invalid for another reason           | Character: X if true, missing if false      | This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)      |
+|CLAIM INVAL OTHER DESCRIPTION          | The stated reason DOLI found a claim invalid if "other"           | Character      |      |
 |Claim Validity                         |            |       |      |
 |Employer left State                    |            |       |      |
 |Employer Cannot be Located             |            |       |      |

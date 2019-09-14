@@ -35,23 +35,23 @@ The following table describes each variable in the raw data:
 |Other                                  | Whether DOLI determined that the claim is invalid for another reason           | Character: X if true, missing if false      | This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)      |
 |CLAIM INVAL OTHER DESCRIPTION          | The stated reason DOLI found a claim invalid if "other"           | Character      |      |
 |Claim Validity                         | Whether an undetermined claim is valid           | Character: X if true, missing if false      | A claim is "undetermined" if DOLI finds that it cannot enforce a descision even if a claim is valid.       |
-|Employer left State                    | Whether a claim is undetermined because the employer left the state           | Character: X if true, missing if false      |      |
-|Employer Cannot be Located             | Whether a claim is undetermined because the employer cannot be located           | Character: X if true, missing if false      |      |
-|Complainant Cannot be Located          | Whether a claim is undetermined because the complainant cannot be located           | Character: X if true, missing if false      |      |
-|Complainant Dropped Claim              | Whether a claim is undetermined because the complainant dropped the claim           | Character: X if true, missing if false      |      |
-|Paid Prior to Investigation            | Whether a claim is undetermined because the employer paid the lost wages prior to the DOLI investigation           | Character: X if true, missing if false      |      |
-|Business is Closed                     | Whether a claim is undetermined because the employer's business has closed          | Character: X if true, missing if false     |      |
-|Other_1                                | Whether a claim is undetermined for another reason           | Character: X if true, missing if false      |      |
+|Employer left State                    | Whether a claim is undetermined because the employer left the state           | Character: X if true, missing if false      | See above     |
+|Employer Cannot be Located             | Whether a claim is undetermined because the employer cannot be located           | Character: X if true, missing if false      | See above     |
+|Complainant Cannot be Located          | Whether a claim is undetermined because the complainant cannot be located           | Character: X if true, missing if false      | See above     |
+|Complainant Dropped Claim              | Whether a claim is undetermined because the complainant dropped the claim           | Character: X if true, missing if false      | See above     |
+|Paid Prior to Investigation            | Whether a claim is undetermined because the employer paid the lost wages prior to the DOLI investigation           | Character: X if true, missing if false      | See above     |
+|Business is Closed                     | Whether a claim is undetermined because the employer's business has closed          | Character: X if true, missing if false     | See above     |
+|Other_1                                | Whether a claim is undetermined for another reason           | Character: X if true, missing if false      | See above     |
 |CLAIM UNDETERMINED OTHER DESCRIPTION   | The stated reason for being undetermined if "other"           | Character      |      |
-|VERIFIED CLAIM AMT                     |            | Character (but easily converted to numeric)      |      |
-|CASE CLOSE/RECLOSE DATE                |            | Character     |      |
-|Employer Contested Valid Determination |            | Character: X if true, missing if false      |      |
-|1st Response Investigation             |            | Character: X if true, missing if false      |      |
-|Formal Investigation                   |            | Character: X if true, missing if false      |      |
-|Request Settlement Conference          |            | Character: X if true, missing if false      |      |
-|Request Informal Fact Finding          |            | Character: X if true, missing if false      |      |
-|Request Formal Fact Finding            |            | Character: X if true, missing if false      |      |
-|Wage Order                             |            | Character: X if true, missing if false      |      |
+|VERIFIED CLAIM AMT                     | The total amount claimed after verification by DOLI           | Character (but easily converted to numeric)      |      |
+|CASE CLOSE/RECLOSE DATE                | Date case was officially closed           | Character     |      |
+|Employer Contested Valid Determination | Whether the employer contested a claim that was found to be valid           | Character: X if true, missing if false      |      |
+|1st Response Investigation             | Whether only a 1st response was conducted           | Character: X if true, missing if false      | DOLI conducts a quick "1st response" investiagtion first to determine if a formal investigation is warranted     |
+|Formal Investigation                   | Whether a formal investigation was conducted           | Character: X if true, missing if false      |      |
+|Request Settlement Conference          |            | All missing     | No such requests in the data      |
+|Request Informal Fact Finding          |            | All missing      | No such requests in the data      |
+|Request Formal Fact Finding            |            | All missing      | No such requests in the data     |
+|Wage Order                             | Whether an official legal order is given for the employer to pay lost wages           | Character: X if true, missing if false      | See page 10, G(1): (http://townhall.virginia.gov/L/GetFile.cfm?File=C:%5CTownHall%5Cdocroot%5CGuidanceDocs%5C181%5CGDoc_DOLI_1780_v5.pdf)     |
 |Informal Conference                    |            | Character: X if true, missing if false     |      |
 |Civil Action for Wages/Penalties       |            | Character: X if true, missing if false      |      |
 |Other_2                                |            | Character: X if true, missing if false      |      |

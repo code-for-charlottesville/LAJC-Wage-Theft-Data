@@ -9,9 +9,9 @@
 |EMPLOYER CITY                          | The employer's city           | Character       |      |
 |ST                                     | The employer's state            | Character      |      |
 |ZIP                                    | The employer's ZIP code            | Character      |      |
-|gender                                 | The **predicted** gender of the person issuing the complaint           | Factor: (male, female)      | Gender is not included in the original data, but the complainants' names are. We used the `gender_df()` function in the `gender` package for R to predict gender from the complainants' first names. This variable is missing if the first name is unusual and `gender_df()` is unable to generate a prediction      |
-|hispanic                               |            |       |      |
-|asian                                  |            |       |      |
+|gender                                 | The **predicted** gender of the person issuing the complaint based on first name          | Factor: (male, female)      | Gender is not included in the original data, but the complainants' names are. We used the `gender_df()` function in the `gender` package for R to predict gender from the complainants' first names. This variable is missing if the first name is unusual and `gender_df()` is unable to generate a prediction      |
+|hispanic                               | Whether the complainant is **predicted** to be Hispanic based on the last name           | Logical: (TRUE, FALSE)      | Race/Ethnicity is not included in the original data. We predicted the race/ethnicity of each complainant from the person's last name using the `predict_race()` function in the `wru` package in R.     |
+|asian                                  | Whether the complainant is **predicted** to be Asian based on the last name           | Logical: (TRUE, FALSE)       | See above     |
 |CLAIM AMT                              |            |       |      |
 |CASE OPEN/RE-OPEN                      |            |       |      |
 |CLAIM RECEIVED                         |            |       |      |

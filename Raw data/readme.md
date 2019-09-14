@@ -51,24 +51,24 @@ The following table describes each variable in the raw data:
 |Request Settlement Conference          |            | All missing     | No such requests in the data      |
 |Request Informal Fact Finding          |            | All missing      | No such requests in the data      |
 |Request Formal Fact Finding            |            | All missing      | No such requests in the data     |
-|Wage Order                             | Whether an official legal order is given for the employer to pay lost wages           | Character: X if true, missing if false      | See page 10, G(1): (http://townhall.virginia.gov/L/GetFile.cfm?File=C:%5CTownHall%5Cdocroot%5CGuidanceDocs%5C181%5CGDoc_DOLI_1780_v5.pdf)     |
-|Informal Conference                    |            | Character: X if true, missing if false     |      |
-|Civil Action for Wages/Penalties       |            | Character: X if true, missing if false      |      |
-|Other_2                                |            | Character: X if true, missing if false      |      |
-|OTHER DISPOSITION DESCRIPTION          |            | Character: X if true, missing if false      |      |
-|CASE CLOSED for the REPRESENTATIVE     |            | Character: X if true, missing if false      |      |
-|JUDGMENT                               |            | Character: X if true, missing if false      |      |
-|DISMISSED                              |            | Character: X if true, missing if false      |      |
-|NON-SUITED                             |            | Character: X if true, missing if false      |      |
-|JUDGMENT_1                             |            | Character: X if true, missing if false     |      |
-|DISMISSED_1                            |            | Character: X if true, missing if false      |      |
-|NON-SUITED_1                           |            | Character: X if true, missing if false      |      |
-|CIVCOURTDTE FOR WAGES/PENALTY          |            | Character      |      |
-|TOT AMT                                |            | Character (but easily converted to numeric)      |      |
-|WAGE AMT                               |            | Character (but easily converted to numeric)      |      |
-|INTEREST AMT                           |            | Character (but easily converted to numeric)      |      |
-|ATTY FEES                              |            | Character (but easily converted to numeric)      |      |
-|DATE FOR WAGES                         |            | Character      |      |
+|Wage Order                             | Whether a legal order is given for the employer to pay lost wages           | Character: X if true, missing if false      | See page 10, G(1): (http://townhall.virginia.gov/L/GetFile.cfm?File=C:%5CTownHall%5Cdocroot%5CGuidanceDocs%5C181%5CGDoc_DOLI_1780_v5.pdf)     |
+|Informal Conference                    |            | All missing     | No such actions in the data     |
+|Civil Action for Wages/Penalties       |            | All missing      | No such actions in the data      |
+|Other_2                                |            | All missing      | No such actions in the data       |
+|OTHER DISPOSITION DESCRIPTION          |            | All missing      |      |
+|CASE CLOSED for the REPRESENTATIVE     | Date the DOLI labor law representative ended the investigation          | Character     |      |
+|JUDGMENT                               |            | All missing       |      |
+|DISMISSED                              |            | All missing       |      |
+|NON-SUITED                             |            | All missing       |      |
+|JUDGMENT_1                             |            | All missing      |      |
+|DISMISSED_1                            |            | All missing       |      |
+|NON-SUITED_1                           |            | All missing       |      |
+|CIVCOURTDTE FOR WAGES/PENALTY          |            | All missing       |      |
+|TOT AMT                                | Total amount recovered for the complainant           | Character (but easily converted to numeric)      |      |
+|WAGE AMT                               | Amount recovered in lost wages for the complainant           | Character (but easily converted to numeric)      |      |
+|INTEREST AMT                           | Amount recovered in interest on lost wages for the complainant           | Character (but easily converted to numeric)      |      |
+|ATTY FEES                              | Amount recovered in reimbursed attorney fees for the complainant           | Character (but easily converted to numeric)      |      |
+|DATE FOR WAGES                         | Date wages were returned to the complainant           | Character      |      |
 |WAGES APPEALED                         |            | Character: X if true, missing if false      |      |
 |WAGES APPEAL CIRCUIT COURT DATE        |            | Character: X if true, missing if false      |      |
 |ASSESSED                               |            | Character: X if true, missing if false      |      |

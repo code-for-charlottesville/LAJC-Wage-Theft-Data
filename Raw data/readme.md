@@ -3,7 +3,7 @@
 |Variable                               |Description |Values |Notes |
 |:--------------------------------------|:-----------|:------|:-----|
 |CLAIM NO                               | A unique ID for each official wage-theft complaint issued to the VDOL           |       |      |
-|COMPLAINT                              |            |       |      |
+|COMPLAINT                              | Whether or not this row represents an official complaint           | X if yes      | All rows are complaints, so safe to ignore this variable     |
 |ROUTINE                                |            |       |      |
 |EMPLOYER NAME                          |            |       |      |
 |EMPLOYER CITY                          |            |       |      |

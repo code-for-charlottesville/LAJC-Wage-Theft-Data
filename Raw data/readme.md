@@ -34,7 +34,7 @@ The following table describes each variable in the raw data:
 |False Claim                            | Whether DOLI determined that the claim is false           | Character: X if true, missing if false      |      |
 |Other                                  | Whether DOLI determined that the claim is invalid for another reason           | Character: X if true, missing if false      | This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)      |
 |CLAIM INVAL OTHER DESCRIPTION          | The stated reason DOLI found a claim invalid if "other"           | Character      |      |
-|Claim Validity                         | A claim is "undetermined" if DOLI finds that it cannot enforce a descision even if a claim is valid. This variable marks whether an undetermined claim is valid           | Character: X if true, missing if false      |      |
+|Claim Validity                         | Whether an undetermined claim is valid           | Character: X if true, missing if false      | A claim is "undetermined" if DOLI finds that it cannot enforce a descision even if a claim is valid.       |
 |Employer left State                    | Whether a claim is undetermined because the employer left the state           | Character: X if true, missing if false      |      |
 |Employer Cannot be Located             | Whether a claim is undetermined because the employer cannot be located           | Character: X if true, missing if false      |      |
 |Complainant Cannot be Located          | Whether a claim is undetermined because the complainant cannot be located           | Character: X if true, missing if false      |      |

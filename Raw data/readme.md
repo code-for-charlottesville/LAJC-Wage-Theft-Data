@@ -25,7 +25,7 @@ The following table describes each variable in the raw data:
 |CASE OPEN/RE-OPEN                      | The date the case was opened           | Character      |      |
 |CLAIM RECEIVED                         | The date the claim was received by DOLI           | Character      |      |
 |Valid                                  | Whether the claim was deemed by DOLI to be valid           | Character: X if valid, missing if not      |      |
-|Informal Resolution                    | Whether the claim was resulted in an informal resolution between the employer and complainant           | Character: X if valid, missing if not       |      |
+|Informal Resolution                    | Whether the claim was resulted in an informal resolution between the employer and complainant           | Character: X if true, missing if false       |      |
 |Bankrupt                               |            |       |      |
 |Invalid                                |            |       |      |
 |Fringe Benefits                        |            |       |      |

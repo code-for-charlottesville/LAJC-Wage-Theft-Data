@@ -34,15 +34,15 @@ The following table describes each variable in the raw data:
 |False Claim                            | Whether DOLI determined that the claim is false           | Character: X if true, missing if false      |      |
 |Other                                  | Whether DOLI determined that the claim is invalid for another reason           | Character: X if true, missing if false      | This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)      |
 |CLAIM INVAL OTHER DESCRIPTION          | The stated reason DOLI found a claim invalid if "other"           | Character      |      |
-|Claim Validity                         |            | Character: X if true, missing if false      |      |
-|Employer left State                    |            | Character: X if true, missing if false      |      |
-|Employer Cannot be Located             |            | Character: X if true, missing if false      |      |
-|Complainant Cannot be Located          |            | Character: X if true, missing if false      |      |
-|Complainant Dropped Claim              |            | Character: X if true, missing if false      |      |
-|Paid Prior to Investigation            |            | Character: X if true, missing if false      |      |
-|Business is Closed                     |            | Character: X if true, missing if false     |      |
-|Other_1                                |            | Character: X if true, missing if false      |      |
-|CLAIM UNDETERMINED OTHER DESCRIPTION   |            | Character      |      |
+|Claim Validity                         | A claim is "undetermined" if DOLI finds that it cannot enforce a descision even if a claim is valid. This variable marks whether an undetermined claim is valid           | Character: X if true, missing if false      |      |
+|Employer left State                    | Whether a claim is undetermined because the employer left the state           | Character: X if true, missing if false      |      |
+|Employer Cannot be Located             | Whether a claim is undetermined because the employer cannot be located           | Character: X if true, missing if false      |      |
+|Complainant Cannot be Located          | Whether a claim is undetermined because the complainant cannot be located           | Character: X if true, missing if false      |      |
+|Complainant Dropped Claim              | Whether a claim is undetermined because the complainant dropped the claim           | Character: X if true, missing if false      |      |
+|Paid Prior to Investigation            | Whether a claim is undetermined because the employer paid the lost wages prior to the DOLI investigation           | Character: X if true, missing if false      |      |
+|Business is Closed                     | Whether a claim is undetermined because the employer's business has closed          | Character: X if true, missing if false     |      |
+|Other_1                                | Whether a claim is undetermined for another reason           | Character: X if true, missing if false      |      |
+|CLAIM UNDETERMINED OTHER DESCRIPTION   | The stated reason for being undetermined if "other"           | Character      |      |
 |VERIFIED CLAIM AMT                     |            | Character (but easily converted to numeric)      |      |
 |CASE CLOSE/RECLOSE DATE                |            | Character     |      |
 |Employer Contested Valid Determination |            | Character: X if true, missing if false      |      |

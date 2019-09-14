@@ -34,69 +34,69 @@ The following table describes each variable in the raw data:
 |False Claim                            | Whether DOLI determined that the claim is false           | Character: X if true, missing if false      |      |
 |Other                                  | Whether DOLI determined that the claim is invalid for another reason           | Character: X if true, missing if false      | This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)      |
 |CLAIM INVAL OTHER DESCRIPTION          | The stated reason DOLI found a claim invalid if "other"           | Character      |      |
-|Claim Validity                         |            |       |      |
-|Employer left State                    |            |       |      |
-|Employer Cannot be Located             |            |       |      |
-|Complainant Cannot be Located          |            |       |      |
-|Complainant Dropped Claim              |            |       |      |
-|Paid Prior to Investigation            |            |       |      |
-|Business is Closed                     |            |       |      |
-|Other_1                                |            |       |      |
-|CLAIM UNDETERMINED OTHER DESCRIPTION   |            |       |      |
-|VERIFIED CLAIM AMT                     |            |       |      |
-|CASE CLOSE/RECLOSE DATE                |            |       |      |
-|Employer Contested Valid Determination |            |       |      |
-|1st Response Investigation             |            |       |      |
-|Formal Investigation                   |            |       |      |
-|Request Settlement Conference          |            |       |      |
-|Request Informal Fact Finding          |            |       |      |
-|Request Formal Fact Finding            |            |       |      |
-|Wage Order                             |            |       |      |
-|Informal Conference                    |            |       |      |
-|Civil Action for Wages/Penalties       |            |       |      |
-|Other_2                                |            |       |      |
-|OTHER DISPOSITION DESCRIPTION          |            |       |      |
-|CASE CLOSED for the REPRESENTATIVE     |            |       |      |
-|JUDGMENT                               |            |       |      |
-|DISMISSED                              |            |       |      |
-|NON-SUITED                             |            |       |      |
-|JUDGMENT_1                             |            |       |      |
-|DISMISSED_1                            |            |       |      |
-|NON-SUITED_1                           |            |       |      |
-|CIVCOURTDTE FOR WAGES/PENALTY          |            |       |      |
-|TOT AMT                                |            |       |      |
-|WAGE AMT                               |            |       |      |
-|INTEREST AMT                           |            |       |      |
-|ATTY FEES                              |            |       |      |
-|DATE FOR WAGES                         |            |       |      |
-|WAGES APPEALED                         |            |       |      |
-|WAGES APPEAL CIRCUIT COURT DATE        |            |       |      |
-|ASSESSED                               |            |       |      |
-|AMT                                    |            |       |      |
-|ATTY FEES_1                            |            |       |      |
-|ASSESSED DATE                          |            |       |      |
-|TOTAL CMP AMT                          |            |       |      |
-|CMP APPEALED                           |            |       |      |
-|CMP APPEAL CIRCUIT COURT DATE          |            |       |      |
-|FINES & COURT COSTS                    |            |       |      |
-|TOTAL WAGES                            |            |       |      |
-|TOTAL INTEREST AMT                     |            |       |      |
-|TOT WAGES & INTEREST                   |            |       |      |
-|GARNISHED AMT                          |            |       |      |
-|JUDGMENT WAGE AMT                      |            |       |      |
-|JUDGEMENT PENALTY AMT                  |            |       |      |
-|DOCKETED/SENT FOR COLLECTION DATE      |            |       |      |
-|ACTION TAKEN                           |            |       |      |
-|COURT DATE                             |            |       |      |
-|CONVICTED - DISPOSITION                |            |       |      |
-|DISMISSED - DISPOSITION                |            |       |      |
-|NOL Prossed                            |            |       |      |
-|CONFINEMENT                            |            |       |      |
-|SUSPENSION                             |            |       |      |
-|BOTH - C&F                             |            |       |      |
-|JUDGMENT_2                             |            |       |      |
-|DISMISSED_2                            |            |       |      |
-|NON-SUITED_2                           |            |       |      |
-|JUDGMENT_3                             |            |       |      |
-|DISMISSED_3                            |            |       |      |
-|NON-SUITED_3                           |            |       |      |
+|Claim Validity                         |            | Character: X if true, missing if false      |      |
+|Employer left State                    |            | Character: X if true, missing if false      |      |
+|Employer Cannot be Located             |            | Character: X if true, missing if false      |      |
+|Complainant Cannot be Located          |            | Character: X if true, missing if false      |      |
+|Complainant Dropped Claim              |            | Character: X if true, missing if false      |      |
+|Paid Prior to Investigation            |            | Character: X if true, missing if false      |      |
+|Business is Closed                     |            | Character: X if true, missing if false     |      |
+|Other_1                                |            | Character: X if true, missing if false      |      |
+|CLAIM UNDETERMINED OTHER DESCRIPTION   |            | Character      |      |
+|VERIFIED CLAIM AMT                     |            | Character (but easily converted to numeric)      |      |
+|CASE CLOSE/RECLOSE DATE                |            | Character     |      |
+|Employer Contested Valid Determination |            | Character: X if true, missing if false      |      |
+|1st Response Investigation             |            | Character: X if true, missing if false      |      |
+|Formal Investigation                   |            | Character: X if true, missing if false      |      |
+|Request Settlement Conference          |            | Character: X if true, missing if false      |      |
+|Request Informal Fact Finding          |            | Character: X if true, missing if false      |      |
+|Request Formal Fact Finding            |            | Character: X if true, missing if false      |      |
+|Wage Order                             |            | Character: X if true, missing if false      |      |
+|Informal Conference                    |            | Character: X if true, missing if false     |      |
+|Civil Action for Wages/Penalties       |            | Character: X if true, missing if false      |      |
+|Other_2                                |            | Character: X if true, missing if false      |      |
+|OTHER DISPOSITION DESCRIPTION          |            | Character: X if true, missing if false      |      |
+|CASE CLOSED for the REPRESENTATIVE     |            | Character: X if true, missing if false      |      |
+|JUDGMENT                               |            | Character: X if true, missing if false      |      |
+|DISMISSED                              |            | Character: X if true, missing if false      |      |
+|NON-SUITED                             |            | Character: X if true, missing if false      |      |
+|JUDGMENT_1                             |            | Character: X if true, missing if false     |      |
+|DISMISSED_1                            |            | Character: X if true, missing if false      |      |
+|NON-SUITED_1                           |            | Character: X if true, missing if false      |      |
+|CIVCOURTDTE FOR WAGES/PENALTY          |            | Character      |      |
+|TOT AMT                                |            | Character (but easily converted to numeric)      |      |
+|WAGE AMT                               |            | Character (but easily converted to numeric)      |      |
+|INTEREST AMT                           |            | Character (but easily converted to numeric)      |      |
+|ATTY FEES                              |            | Character (but easily converted to numeric)      |      |
+|DATE FOR WAGES                         |            | Character      |      |
+|WAGES APPEALED                         |            | Character: X if true, missing if false      |      |
+|WAGES APPEAL CIRCUIT COURT DATE        |            | Character: X if true, missing if false      |      |
+|ASSESSED                               |            | Character: X if true, missing if false      |      |
+|AMT                                    |            | Character (but easily converted to numeric)      |      |
+|ATTY FEES_1                            |            | Character (but easily converted to numeric)      |      |
+|ASSESSED DATE                          |            | Character      |      |
+|TOTAL CMP AMT                          |            | Character (but easily converted to numeric)      |      |
+|CMP APPEALED                           |            | Character: X if true, missing if false      |      |
+|CMP APPEAL CIRCUIT COURT DATE          |            | Character      |      |
+|FINES & COURT COSTS                    |            | Character (but easily converted to numeric)      |      |
+|TOTAL WAGES                            |            | Character (but easily converted to numeric)      |      |
+|TOTAL INTEREST AMT                     |            | Character (but easily converted to numeric)      |      |
+|TOT WAGES & INTEREST                   |            | Character (but easily converted to numeric)      |      |
+|GARNISHED AMT                          |            | Character (but easily converted to numeric)      |      |
+|JUDGMENT WAGE AMT                      |            | Character (but easily converted to numeric)      |      |
+|JUDGEMENT PENALTY AMT                  |            | Character (but easily converted to numeric)      |      |
+|DOCKETED/SENT FOR COLLECTION DATE      |            | Character      |      |
+|ACTION TAKEN                           |            | Character: X if true, missing if false      |      |
+|COURT DATE                             |            | Character     |      |
+|CONVICTED - DISPOSITION                |            | Character: X if true, missing if false      |      |
+|DISMISSED - DISPOSITION                |            | Character: X if true, missing if false      |      |
+|NOL Prossed                            |            | Character: X if true, missing if false      |      |
+|CONFINEMENT                            |            | Character: X if true, missing if false      |      |
+|SUSPENSION                             |            | Character: X if true, missing if false      |      |
+|BOTH - C&F                             |            | Character: X if true, missing if false      |      |
+|JUDGMENT_2                             |            | Character: X if true, missing if false      |      |
+|DISMISSED_2                            |            | Character: X if true, missing if false      |      |
+|NON-SUITED_2                           |            | Character: X if true, missing if false      |      |
+|JUDGMENT_3                             |            | Character: X if true, missing if false      |      |
+|DISMISSED_3                            |            | Character: X if true, missing if false      |      |
+|NON-SUITED_3                           |            | Character: X if true, missing if false      |      |

@@ -28,7 +28,7 @@ In Virginia, people who believe they have been the victim of wage theft can file
 The [Legal Aid Justice Center](justice4all.org) is writing a report on the performance of the DOLI in investigating these official complaints. They filed a Freedom of Information Act (FOIA) request to acquire the raw dataset we will be working with. **Our objective is to produce clean datasets, tables, figures, and advanced analyses** to assist the LAJC in writing this report.
 
 **Data:**
-The raw data is available here
+The raw data is available in the Raw Data folder on this repository. A codebook is listed here: https://github.com/code-for-charlottesville/LAJC-Wage-Theft-Data/tree/master/Raw%20data
 
 **Goals:**
 Here's a list of our immediate goals. However

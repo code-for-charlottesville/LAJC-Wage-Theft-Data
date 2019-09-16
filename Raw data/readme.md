@@ -5,7 +5,7 @@ Prior to posting the raw data on GitHub we edited it to
 
 * Remove the name, address, state, and ZIP code of the people who issued the complaints
 
-* Add variables that use census data to predict the likely gender of each complainant, as well as whether or not each complainant is likely to be Hispanic or Asian
+* Add variables that make informed guesses about the gender of each complainant, as well as whether or not each complainant is likely to be Hispanic or Asian
 
 The following table describes each variable in the raw data:
 

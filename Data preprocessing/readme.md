@@ -1,1 +1,1 @@
-Please store your scripts for cleaning the data here. We welcome all platforms!
+Please store your scripts for cleaning the data here. **We welcome all platforms/software/languages!**

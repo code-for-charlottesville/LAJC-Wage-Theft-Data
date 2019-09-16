@@ -11,7 +11,7 @@ The following table describes each variable in the raw data:
 
 |Variable                               |Description |Values |Notes |
 |:--------------------------------------|:-----------|:------|:-----|
-|CLAIM NO                               | A unique ID for each official wage-theft complaint issued to the VDOL           |       |      |
+|CLAIM NO                               | A unique ID for each official wage-theft complaint issued to the DOLI           |       |      |
 |COMPLAINT                              | Whether or not this row represents an official complaint           | X if yes      | All rows are complaints, so safe to ignore this variable     |
 |ROUTINE                                |            |       | Missing everywhere, safe to ignore     |
 |EMPLOYER NAME                          | The name of the employer against whom the wage-theft complaint is made           | Character      |      |

@@ -23,7 +23,7 @@
 | Goal                                                                    | Timing                   | Status      | Location                     |
 |-------------------------------------------------------------------------|--------------------------|-------------|------------------------------|
 | Categorize every business into an industry group                        | 9/17, 10/1, 10/15        | In progress | https://tinyurl.com/yyyfer65 |
-| Pre-process data                                                        | 9/17, 10/1               | In progress |                             
+| Pre-process data                                                        | 9/17, 10/1               | In progress |   https://github.com/code-for-charlottesville/LAJC-Wage-Theft-Data/tree/master/Data%20preprocessing|                          
 | Determine what % of claims get wages ordered to be returned  | 9/17, 10/1               |             |                              
 | Determine what % of claims get 1st response and formal investigations opened  | 9/17, 10/1               | In progress |                              
 | Determine what % of claim are found to be valid, invalid, and undetermined | 9/17, 10/1               | In progress |

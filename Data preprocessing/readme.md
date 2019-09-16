@@ -1,1 +1,1 @@
-Place your cleaning scripts here
+Please store your scripts for cleaning the data here. We welcome all platforms!

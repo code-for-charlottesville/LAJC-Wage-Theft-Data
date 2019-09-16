@@ -1,4 +1,6 @@
-There are nearly 4000 rows in the data, each one with another business. We want to categorize these businesses intion industry groups to see if there are differences across groups.
+## Crowdsourced Data Collection
+
+There are nearly 4000 rows in the data, each one with another business. We want to categorize these businesses into industry groups to see if there are differences across groups.
 
 Please help us by going to this form: (https://tinyurl.com/yyyfer65)
 

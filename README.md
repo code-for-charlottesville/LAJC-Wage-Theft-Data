@@ -42,24 +42,17 @@ Wage theft occurs when
 
 ## How to Use GitHub
 
+* Git https://git-scm.com/
+*  Github https://github.com/
+
 0. Install git on your local machine
-
 1. Get a GitHub account and log-in
-
 2. Go to the CFC repo
-
 3. Fork the repo (not clone)
-
 4. Go to your account and to your version of the CFC repo
-
 5. Get the clone URL
-
 6. Clone your repo
-
 7. Use git init, add commit
-
 8. push
-
 9. Issue a pull request
-
 10. CFC admins approve

@@ -23,18 +23,14 @@
 | Goal                                                                    | Timing                   | Status      | Location                     |
 |-------------------------------------------------------------------------|--------------------------|-------------|------------------------------|
 | Categorize every business into an industry group                        | 9/17, 10/1, 10/15        | In progress | https://tinyurl.com/yyyfer65 |
-| Pre-process data                                                        | 9/17, 10/1               | In progress |                              |
-| Determine what % of claims get wages ordered to be returned  | 9/17, 10/1               |             |                              |
-| Determine what % of claims get 1st response and formal investigations opened  | 9/17, 10/1               | In progress |                              |
+| Pre-process data                                                        | 9/17, 10/1               | In progress |                             
+| Determine what % of claims get wages ordered to be returned  | 9/17, 10/1               |             |                              
+| Determine what % of claims get 1st response and formal investigations opened  | 9/17, 10/1               | In progress |                              
 | Determine what % of claim are found to be valid, invalid, and undetermined | 9/17, 10/1               | In progress |
-|
 | How long does it take to conduct an investigation? | 9/17, 10/1               | In progress |
-|
 | How long does it take to get a wage order? | 9/17, 10/1               | In progress |
-|
 | If wages are ordered to be returned, what's the distribution of amounts? | 9/17, 10/1               | In progress |
-|
-| How do these outcomes listed above depend on ethnicity, gender, and industrial category?   | 9/17, 10/1               | In progress |                                                                     |                          |             |                              
+| How do these outcomes listed above depend on ethnicity, gender, and industrial category?   | 9/17, 10/1               | In progress |                                
 
 ## Introduction and Objective
 Wage theft occurs when

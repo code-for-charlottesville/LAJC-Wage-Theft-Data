@@ -55,7 +55,7 @@ Here's a list of our immediate goals to help the LAJC. However, as you work on t
 Please fork this repo, make edits (with git if you like, or using the GitHub GUI), then issue a **pull request**. We will be checking the repo frequently throughout the evening to merge these pulls into the main repo. If you would like us to merge, and we haven't yet, feel free to tap one of us on the shoulder.
 
 ### If you are a beginner with GitHub
-GitHub is the most popular website for sharing data and code. But everyone who uses this website remembers how intimidating GitHub can be. If you've never seen or used GitHub before, don't worry! You have options:
+GitHub is the most popular website for sharing data and code. But everyone who uses this website remembers how intimidating GitHub can be at first. If you've never seen or used GitHub before, don't worry! You have options:
 
 * You can help us out a lot while skipping the technical stuff by helping to categorize the businesses into industry groups: https://tinyurl.com/yyyfer65
 

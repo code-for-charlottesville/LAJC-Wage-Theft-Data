@@ -59,7 +59,7 @@ GitHub is the most popular website for sharing data and code. But everyone who u
 
 * Or you can follow these steps to get going with GitHub:
 
-1. Get a GitHub account (https://github.com/join?source=header-home) and log-in
+1. Get a GitHub account <a href="https://github.com/join?source=header-home" target="_blank">here</a>, and then log-in
 
 2. Go to the CFC repo
 

@@ -91,4 +91,4 @@ Then click on "Upload file" and select the files you want to exist on your GitHu
 
 10. One of the adminstrators of the main Code for Charlottesvilee repository will review your files and accept them to be added to the main repository.
 
-If you have any questions, please don't hesitate to speak with one of the co-captains or to one of the more experienced volunteers. For more information on GitHub (and Git) see: github.com/UVA-DSI/Open-Data-Lab/tree/master/education/GitHub
+If you have any questions, please don't hesitate to speak with one of the co-captains or to one of the more experienced volunteers. For more information on GitHub (and Git) see: https://github.com/UVA-DSI/Open-Data-Lab/tree/master/education/GitHub

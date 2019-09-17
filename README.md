@@ -46,18 +46,20 @@ Here's a list of our immediate goals to help the LAJC. However, as you work on t
 | How do these outcomes listed above depend on ethnicity, gender, and industrial category?   | 9/17, 10/1               | In progress |                                
 
 
-
-## Project Description
-
-### Guiding Principles
-
-* 
-
 ## How to Use GitHub
+### If you are already familiar with GitHub (and Git)
+Please fork this repo, make edits (with git if you like, or using the GitHub GUI), then issue a **pull request**. We will be checking the repo frequently throughout the evening to merge these pulls into the main repo. If you would like us to merge, and we haven't yet, feel free to tap one of us on the shoulder.
 
-0. Install git on your local machine
+### If you are a beginner with GitHub
+GitHub is the most popular website for sharing data and code. But everyone who uses this website remembers how intimidating GitHub can be. If you've never seen or used GitHub before, don't worry! You have options:
 
-1. Get a GitHub account and log-in
+* You can help us out a lot while skipping the technical stuff by helping to categorize the businesses into industry groups: https://tinyurl.com/yyyfer65
+
+* You can team up with a more experienced volunteer
+
+* Or you can follow these steps to get going with GitHub:
+
+1. Get a GitHub account (https://github.com/join?source=header-home) and log-in
 
 2. Go to the CFC repo
 

@@ -1,6 +1,7 @@
 # Legal Aid Justice Center (LAJC) Wage-Theft Data
 
-Our slides: www.tinyurl.com/cfclaunchnight
+Join our Meetup group here: https://www.meetup.com/Code-for-Charlottesvile/
+Our slides for tonight: www.tinyurl.com/cfclaunchnight
 
 **Project Status:** Active
 

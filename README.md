@@ -61,7 +61,7 @@ GitHub is the most popular website for sharing data and code. But everyone who u
 
 1. Get a GitHub account <a href="https://github.com/join?source=header-home" target="_blank">here</a>, and then log-in
 
-2. Go to the CFC repo
+2. In the top-right corner of this page, click the button marked **fork**.
 
 3. Fork the repo (not clone)
 

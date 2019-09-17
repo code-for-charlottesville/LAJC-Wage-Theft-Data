@@ -67,13 +67,13 @@ GitHub is the most popular website for sharing data and code. But everyone who u
 
 2.  Choose the FREE, **not the paid**, option. Don't select "help me set up an organization" and push Continue. Fill out the survey if you'd like, and verify your email. This will take you to your personal GitHub homepage.
 
-3. Now that you are signed in, navigate back to this website. In the top-right corner of this page, click the button marked **fork** and click on your GitHub user name.
+3. Now that you are signed in, navigate back to this Code for Charlottesville GitHub page. In the top-right corner of this page, click the button marked **fork** and click on your GitHub user name.
 
 4. This will take you to a *copy* of this webpage that will exist ONLY on your personal GitHub page. At the top of the screen, it should say *your-user-name/LAJC-Wage-Theft-Data* and NOT *code-for-charlottesville/LAJC-Wage-Theft-Data*.
 
 5. Click "Clone or Download" and "Download ZIP" and unzip the folder. You will now have access to all of the files that exist in this repository on your local machine.
 
-6. The raw data will be in this folder, under the folder named "Raw Data", as *lajc_wage_claim.csv*. If other volunteers have already made scripts to clean the data in Python, R, Stata, SAS, or another program, the script will be in the folder named "Data preprocessing". 
+6. The raw data will be in this folder, under the folder named "Raw Data", as *lajc_wage_claim.csv*. If other volunteers have already made scripts to clean the data in Python, R, Stata, SAS, or another program, the scripts will be in the folder named "Data preprocessing". 
 
 7. Use the raw data and cleaning scripts to do whatever work you want to do. Save your files on your local computer for now.
 
@@ -85,10 +85,10 @@ GitHub is the most popular website for sharing data and code. But everyone who u
   
   * Use "Final products" for anything that is ready to be shared with our community partner
   
- Then click on "Upload file" and select the files you want to exist on your GitHub page. At the bottom, you can write a short description of these files if you want. Then select "Commit Changes" to upload the files.
+Then click on "Upload file" and select the files you want to exist on your GitHub page. At the bottom, you can write a short description of these files if you want. Then select "Commit Changes" to upload the files.
 
 9. When you have uploaded all of the files you want to share, it's time to share these files with the main Code for Charlottesville repository. To do that, click "New Pull Request". Then push "Create pull request". Write a comment about what you did, if you want, and click "Create pull request" again. 
 
 10. One of the adminstrators of the main Code for Charlottesvilee repository will review your files and accept them to be added to the main repository.
 
-If you have any questions, please don't hesitate to speak with one of the co-captains or to one of the more experienced volunteers.
+If you have any questions, please don't hesitate to speak with one of the co-captains or to one of the more experienced volunteers. For more information on GitHub (and Git) see: github.com/UVA-DSI/Open-Data-Lab/tree/master/education/GitHub

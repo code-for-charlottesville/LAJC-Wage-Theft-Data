@@ -85,7 +85,7 @@ GitHub is the most popular website for sharing data and code. But everyone who u
   
   * Use "Final products" for anything that is ready to be shared with our community partner
   
-Then click on "Upload file" and select the files you want to exist on your GitHub page. At the bottom, you can write a short description of these files if you want. Then select "Commit Changes" to upload the files.
+ Then click on "Upload file" and select the files you want to exist on your GitHub page. At the bottom, you can write a short description of these files if you want. Then select "Commit Changes" to upload the files.
 
 9. When you have uploaded all of the files you want to share, it's time to share these files with the main Code for Charlottesville repository. To do that, click "New Pull Request". Then push "Create pull request". Write a comment about what you did, if you want, and click "Create pull request" again. 
 

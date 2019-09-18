@@ -1,0 +1,90 @@
+newcol,Variable,Description,Values,Notes
+claim_no,CLAIM NO ,A unique ID for each official wage-theft complaint issued to the DOLI ,,
+complaint,COMPLAINT ,Whether or not this row represents an official complaint ,X if yes ,"All rows are complaints, so safe to ignore this variable"
+routine,ROUTINE ,,,"Missing everywhere, safe to ignore"
+employer_name,EMPLOYER NAME ,The name of the employer against whom the wage-theft complaint is made ,Character ,
+employer_city,EMPLOYER CITY ,The employer's city ,Character ,
+st,ST ,The employer's state ,Character ,
+zip,ZIP ,The employer's ZIP code ,Character ,
+gender,gender ,The predicted gender of the person issuing the complaint based on first name ,"Factor: (male, female) ","Gender is not included in the original data, but the complainants' names are. We used the gender_df() function in the gender package for R to predict gender from the complainants' first names. This variable is missing if the first name is unusual and gender_df() is unable to generate a prediction"
+hispanic,hispanic ,Whether the complainant is predicted to be Hispanic based on the last name ,"Logical: (TRUE, FALSE) ",Race/Ethnicity is not included in the original data. We predicted the race/ethnicity of each complainant from the person's last name using the predict_race() function in the wru package in R.
+asian,asian ,Whether the complainant is predicted to be Asian based on the last name ,"Logical: (TRUE, FALSE) ",See above
+claim_amt,CLAIM AMT ,The amount of money claimed to have been illegally withheld ,Character (but easily converted to numeric) ,
+case_open_re_open,CASE OPEN/RE-OPEN ,The date the case was opened ,Character ,
+claim_received,CLAIM RECEIVED ,The date the claim was received by DOLI ,Character ,
+valid,Valid ,Whether the claim was deemed by DOLI to be valid ,"Character: X if valid, missing if not ",
+informal_resolution,Informal Resolution ,Whether the claim was resulted in an informal resolution between the employer and complainant ,"Character: X if true, missing if false ",
+bankrupt,Bankrupt ,Whether the claim is being made against a bankrupt employer ,"Character: X if true, missing if false ",This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)
+invalid,Invalid ,Whether DOLI disqualified the claim for one of the following reasons: ,"Character: X if true, missing if false ",
+fringe_benefits,Fringe Benefits ,Whether DOLI disqualified the claim because it deals with contractual payments beyond a base salary ,"Character: X if true, missing if false ",This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)
+independent_agent,Independent Agent ,Whether DOLI disqualified the claim because it involves a contract worker instead of a direct employee ,"Character: X if true, missing if false ",This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)
+subcontractor,Subcontractor ,Whether DOLI disqualified the claim because it involves a subcontract worker instead of a direct employee ,"Character: X if true, missing if false ",This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)
+false_claim,False Claim ,Whether DOLI determined that the claim is false ,"Character: X if true, missing if false ",
+other,Other ,Whether DOLI determined that the claim is invalid for another reason ,"Character: X if true, missing if false ",This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)
+claim_inval_other_description,CLAIM INVAL OTHER DESCRIPTION ,"The stated reason DOLI found a claim invalid if ""other"" ",Character ,
+claim_validity,Claim Validity ,Whether an undetermined claim is valid ,"Character: X if true, missing if false ","A claim is ""undetermined"" if DOLI finds that it cannot enforce a descision even if a claim is valid."
+employer_left_state,Employer left State ,Whether a claim is undetermined because the employer left the state ,"Character: X if true, missing if false ",See above
+employer_cannot_be_located,Employer Cannot be Located ,Whether a claim is undetermined because the employer cannot be located ,"Character: X if true, missing if false ",See above
+complainant_cannot_be_located,Complainant Cannot be Located ,Whether a claim is undetermined because the complainant cannot be located ,"Character: X if true, missing if false ",See above
+complainant_dropped_claim,Complainant Dropped Claim ,Whether a claim is undetermined because the complainant dropped the claim ,"Character: X if true, missing if false ",See above
+paid_prior_to_investigation,Paid Prior to Investigation ,Whether a claim is undetermined because the employer paid the lost wages prior to the DOLI investigation ,"Character: X if true, missing if false ",See above
+business_is_closed,Business is Closed ,Whether a claim is undetermined because the employer's business has closed ,"Character: X if true, missing if false ",See above
+other_1,Other_1 ,Whether a claim is undetermined for another reason ,"Character: X if true, missing if false ",See above
+claim_undetermined_other_description,CLAIM UNDETERMINED OTHER DESCRIPTION ,"The stated reason for being undetermined if ""other"" ",Character ,
+verified_claim_amt,VERIFIED CLAIM AMT ,The total amount claimed after verification by DOLI ,Character (but easily converted to numeric) ,
+case_close_reclose_date,CASE CLOSE/RECLOSE DATE ,Date case was officially closed ,Character ,
+employer_contested_valid_determination,Employer Contested Valid Determination ,Whether the employer contested a claim that was found to be valid ,"Character: X if true, missing if false ",
+1st_response_investigation,1st Response Investigation ,Whether only a 1st response was conducted ,"Character: X if true, missing if false ","DOLI conducts a quick ""1st response"" investiagtion first to determine if a formal investigation is warranted"
+formal_investigation,Formal Investigation ,Whether a formal investigation was conducted ,"Character: X if true, missing if false ",
+request_settlement_conference,Request Settlement Conference ,,All missing ,No such requests in the data
+request_informal_fact_finding,Request Informal Fact Finding ,,All missing ,No such requests in the data
+request_formal_fact_finding,Request Formal Fact Finding ,,All missing ,No such requests in the data
+wage_order,Wage Order ,Whether a legal order is given for the employer to pay lost wages ,"Character: X if true, missing if false ","See page 10, G(1): (http://townhall.virginia.gov/L/GetFile.cfm?File=C:%5CTownHall%5Cdocroot%5CGuidanceDocs%5C181%5CGDoc_DOLI_1780_v5.pdf)"
+informal_conference,Informal Conference ,,All missing ,No such actions in the data
+civil_action_for_wages_penalties,Civil Action for Wages/Penalties ,,All missing ,No such actions in the data
+other_2,Other_2 ,,All missing ,No such actions in the data
+other_disposition_description,OTHER DISPOSITION DESCRIPTION ,,All missing ,
+case_closed_for_the_representative,CASE CLOSED for the REPRESENTATIVE ,Date the DOLI labor law representative ended the investigation ,Character ,
+judgment,JUDGMENT ,,All missing ,
+dismissed,DISMISSED ,,All missing ,
+non_suited,NON-SUITED ,,All missing ,
+judgment_1,JUDGMENT_1 ,,All missing ,
+dismissed_1,DISMISSED_1 ,,All missing ,
+non_suited_1,NON-SUITED_1 ,,All missing ,
+civcourtdte_for_wages_penalty,CIVCOURTDTE FOR WAGES/PENALTY ,,All missing ,
+tot_amt,TOT AMT ,Total amount recovered for the complainant ,Character (but easily converted to numeric) ,
+wage_amt,WAGE AMT ,Amount recovered in lost wages for the complainant ,Character (but easily converted to numeric) ,
+interest_amt,INTEREST AMT ,Amount recovered in interest on lost wages for the complainant ,Character (but easily converted to numeric) ,
+atty_fees,ATTY FEES ,Amount recovered in reimbursed attorney fees for the complainant ,Character (but easily converted to numeric) ,
+date_for_wages,DATE FOR WAGES ,Date wages were returned to the complainant ,Character ,
+wages_appealed,WAGES APPEALED ,,All missing ,
+wages_appeal_circuit_court_date,WAGES APPEAL CIRCUIT COURT DATE ,,All missing ,
+assessed,ASSESSED ,Whether the DOLI investigation concludes the employer owes a civil monetary penalty ,"Character: X if true, missing if false ","A civil monentary penalty (CMP) is a fine an employer must pay as punishment for wage-theft, in addition to paying back wages and fees"
+amt,AMT ,Amount of the CMP owed by the employer ,Character (but easily converted to numeric) ,See above
+atty_fees_1,ATTY FEES_1 ,Attorney fees owed by the employer as part of the CMP ,Character (but easily converted to numeric) ,See above
+assessed_date,ASSESSED DATE ,Date CMP totals were assessed ,Character ,See above
+total_cmp_amt,TOTAL CMP AMT ,CMP + attorney fees ,Character (but easily converted to numeric) ,See above
+cmp_appealed,CMP APPEALED ,,All missing ,See above
+cmp_appeal_circuit_court_date,CMP APPEAL CIRCUIT COURT DATE ,,All missing ,See above
+fines_and_court_costs,FINES & COURT COSTS ,Other fines and court costs associated with the CMP ,Character (but easily converted to numeric) ,See above
+total_wages,TOTAL WAGES ,Total wages that the DOLI says have been actually collected ,Character (but easily converted to numeric) ,"We're not sure what to make of these ""collection"" variables at this point. After a legal order for an employer to repay wages, the case is referred to a collection agency or to an attorney in charge of collection. These values indicate the amount that has been collected. It includes amounts that have been legally ordered, and amounts that were settled upon in civil court or outside DOLI jurisdiction."
+total_interest_amt,TOTAL INTEREST AMT ,Total interest collected ,Character (but easily converted to numeric) ,See above
+tot_wages_and_interest,TOT WAGES & INTEREST ,Wages + interest collected ,Character (but easily converted to numeric) ,See above
+garnished_amt,GARNISHED AMT ,,All $0 ,
+judgment_wage_amt,JUDGMENT WAGE AMT ,We think these are additional fees for repeat offenders ,Character (but easily converted to numeric) ,
+judgement_penalty_amt,JUDGEMENT PENALTY AMT ,We think these are additional fees for repeat offenders ,Character (but easily converted to numeric) ,
+docketed_sent_for_collection_date,DOCKETED/SENT FOR COLLECTION DATE ,,All missing ,
+action_taken,ACTION TAKEN ,,All missing ,
+court_date,COURT DATE ,,All missing ,
+convicted_disposition,CONVICTED - DISPOSITION ,,All missing ,
+dismissed_disposition,DISMISSED - DISPOSITION ,,All missing ,
+nol_prossed,NOL Prossed ,,All missing ,
+confinement,CONFINEMENT ,,All missing ,
+suspension,SUSPENSION ,,All missing ,
+both_candf,BOTH - C&F ,,All missing ,
+judgment_2,JUDGMENT_2 ,,All missing ,
+dismissed_2,DISMISSED_2 ,,All missing ,
+non_suited_2,NON-SUITED_2 ,,All missing ,
+judgment_3,JUDGMENT_3 ,,All missing ,
+dismissed_3,DISMISSED_3 ,,All missing ,
+non_suited_3,NON-SUITED_3 ,,All missing ,

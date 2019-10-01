@@ -1,6 +1,6 @@
 Join our Meetup group here: https://www.meetup.com/Code-for-Charlottesvile/
 
-Our slides for tonight: www.tinyurl.com/cfclaunchnight
+Our slides for tonight: https://tinyurl.com/CFCslides
 
 # Legal Aid Justice Center (LAJC) Wage-Theft Data
 
@@ -32,22 +32,92 @@ In Virginia, people who believe they have been the victim of wage theft can file
 The [Legal Aid Justice Center](justice4all.org) is writing a report on the performance of the DOLI in investigating these official complaints. They filed a Freedom of Information Act (FOIA) request to acquire the raw dataset we will be working with. **Our objective is to produce clean datasets, tables, figures, and advanced analyses** to assist the LAJC in writing this report.
 
 ## Data
-The raw data is available in the Raw Data folder on this repository. A codebook is listed here: https://github.com/code-for-charlottesville/LAJC-Wage-Theft-Data/tree/master/Raw%20data
+The raw data is available in the Raw Data folder on this repository, as **lajc_wage_claim.csv**. A codebook is listed here: https://github.com/code-for-charlottesville/LAJC-Wage-Theft-Data/tree/master/Raw%20data
+
+One version of a cleaned dataset is also stored here, as **lajc_clean.csv**.
 
 ## Goals
-Here's a list of our immediate goals to help the LAJC. However, as you work on the data, you might have ideas for additional goals, and **you should feel free to pursue your ideas.**
+Here's a list of the immediate goals the LAJC wants us to work on. Feel free to focus on one of them, or more if you have time. Also, as you work on the data, you might have ideas for additional goals, and **you should feel free to pursue your ideas.**
 
-| Goal                                                                    | Timing                   | Status      | Location                     |
-|-------------------------------------------------------------------------|--------------------------|-------------|------------------------------|
-| Categorize every business into an industry group                        | 9/17, 10/1, 10/15        | In progress | https://tinyurl.com/yyyfer65 |
-| Pre-process data                                                        | 9/17, 10/1               | In progress |   https://github.com/code-for-charlottesville/LAJC-Wage-Theft-Data/tree/master/Data%20preprocessing|                          
-| Determine what % of claims get wages ordered to be returned  | 9/17, 10/1               | In progress            |                              
-| Determine what % of claims get 1st response and formal investigations opened  | 9/17, 10/1               | In progress |                              
-| Determine what % of claim are found to be valid, invalid, and undetermined | 9/17, 10/1               | In progress |
-| How long does it take to conduct an investigation? | 9/17, 10/1               | In progress |
-| How long does it take to get a wage order? | 9/17, 10/1               | In progress |
-| If wages are ordered to be returned, what's the distribution of amounts? | 9/17, 10/1               | In progress |
-| How do these outcomes listed above depend on ethnicity, gender, and industrial category?   | 9/17, 10/1               | In progress |                                
+1. **Create a map dividing Virginia into eight regions, showing the number/% of cases where the employer is located in each region.** 
+Please use the demographic regions used by UVA’s Cooper Center for Public Service, available here https://demographics.coopercenter.org/virginia-regions. (Also note the number/% of cases where the employer is out of state, and the number/% of cases where the employer’s location can’t be determined.)
+
+2. **A table showing a comprehensive overview of the reasons that DOLI has rejected cases over the last five years.** For each reason, we’d like to know the number of cases dismissed on this basis (for example: "47 cases were dismissed because the worker worked some overtime"). (Some cases have more than one reason for dismissal.)
+
+This unfortunately may require a human being to look over the various reasons for dismissal listed in the “Other” columns (columns 21 and 31) and determine how to code each one. This may require a little independent judgment in some cases. For example, DOLI will reject a case if the worker is seeking over $15,000. One DOLI investigator may note this as "$15,000 limit," while another may write "exceeds maximum claim amount." 
+
+The reasons for dismissal that LAJC is most interested are these:
+
+  * The business is closed / out of business (this is different from “business bankrupt”)
+
+  * The worker had a written employment agreement
+
+  * The worker worked overtime in at least one week
+
+  * The work was performed outside of Virginia
+
+  * The worker is seeking tips or was a tipped employee
+
+   * The claim amount is over $15,000
+   
+  * The worker hired an attorney (this is different from “the worker filed a lawsuit”)
+
+  * The worker did not demand the wages from the employer before filing a complaint with DOLI
+
+  * The worker was an independent agent/subcontractor/self-employed or DOLI was otherwise unable to establish an employer-employee relationship
+
+  * Errors with the claim form (e.g. the form was incomplete, or the worker didn’t provide an exact claim amount, or the worker signed in pencil rather than in pen, etc.)
+
+  * The claim seeks minimum wages
+
+But please track the other reasons as well! (E.g., complainant can’t be found / worker dropped or withdrew their claim / worker got paid / 2-year statute of limitations / insufficient documentation to proceed, etc.)
+
+3. Data about case duration: (Open Date to Case Closed). I’m particularly interested in:
+
+                                                               i.      How many cases closed the same day they were opened
+
+                                                             ii.      Average/median/modal length of time each case is open
+
+                                                           iii.      Longest amount of time that any case was open
+
+                                                           iv.      Distribution of case duration (for cases that were not closed the same day they were open)
+
+                1-10 days open
+                11-31 days open
+                32-90 days open
+                91-120 days open
+                Over 120 days open
+
+ 
+
+        Data About Case Processing
+
+                                                               i.      Number/% of cases closed after a first-response investigation
+
+                                                             ii.      Number/% of cases closed after a formal investigation, or an informal investigation
+
+                                                           iii.      Number/% of cases closed after a settlement conference
+
+                                                           iv.      Wage Orders issued
+
+                                                             v.      Cases sent to collections/amounts recovered
+
+                                                           vi.      Number of cases where DOLI took the employer to court (civil or criminal)
+
+ 
+
+        Data about money recovered.
+
+                                                               i.      Number/% of cases where DOLI recovered some money for the worker
+
+                                                             ii.      In cases where DOLI recovers some money, what’s the average/mean/modal amount recovered? (in terms of wages, interest, and wages-plus-interest).
+
+                                                           iii.      If possible, I’d also like to see this data broken down by each year. (For example, if DOLI recovered all these wages in 2017 and recovered nothing in the other years, that’d be interesting to know).
+
+ 
+
+        Some way to make the data publicly accessible/searchable/manipulable
+                            
 
 
 ## How to Use GitHub

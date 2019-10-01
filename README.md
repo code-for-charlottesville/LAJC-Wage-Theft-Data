@@ -72,41 +72,29 @@ The reasons for dismissal that LAJC is most interested are these:
 
 But please track the other reasons as well! (E.g., complainant can’t be found / worker dropped or withdrew their claim / worker got paid / 2-year statute of limitations / insufficient documentation to proceed, etc.)
 
-3. Data about case duration: (Open Date to Case Closed). I’m particularly interested in:
+3. **A figure or table to tell us about case duration**: (Open Date to Case Closed). LAJC is particularly interested in:
 
-                                                               i.      How many cases closed the same day they were opened
+  * How many cases closed the same day they were opened
+  * Average/median/modal length of time each case is open
+  * Longest amount of time that any case was open
+  * Distribution of case duration (for cases that were not closed the same day they were open)
 
-                                                             ii.      Average/median/modal length of time each case is open
+    * 1-10 days open
+    * 11-31 days open
+    * 32-90 days open
+    * 91-120 days open
+    * Over 120 days open
 
-                                                           iii.      Longest amount of time that any case was open
+4. **A figure or table to telln us about case processing**
 
-                                                           iv.      Distribution of case duration (for cases that were not closed the same day they were open)
+  * Number/% of cases closed after a first-response investigation
+  * Number/% of cases closed after a formal investigation, or an informal investigation
+  * Number/% of cases closed after a settlement conference
+  * Wage Orders issued
+  * Cases sent to collections/amounts recovered
+  * Number of cases where DOLI took the employer to court (civil or criminal)
 
-                1-10 days open
-                11-31 days open
-                32-90 days open
-                91-120 days open
-                Over 120 days open
-
- 
-
-        Data About Case Processing
-
-                                                               i.      Number/% of cases closed after a first-response investigation
-
-                                                             ii.      Number/% of cases closed after a formal investigation, or an informal investigation
-
-                                                           iii.      Number/% of cases closed after a settlement conference
-
-                                                           iv.      Wage Orders issued
-
-                                                             v.      Cases sent to collections/amounts recovered
-
-                                                           vi.      Number of cases where DOLI took the employer to court (civil or criminal)
-
- 
-
-        Data about money recovered.
+5. **A figure or table to tell us about money recovered**
 
                                                                i.      Number/% of cases where DOLI recovered some money for the worker
 

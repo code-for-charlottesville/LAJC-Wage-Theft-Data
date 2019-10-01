@@ -27,7 +27,7 @@ The following table describes each variable in the raw data:
 |11 ****CASE OPEN/RE-OPEN****  | The date the case was opened | Character  |  |
 |12 CLAIM RECEIVED | The date the claim was received by DOLI | Character  |  |
 |13 ****Valid****  | Whether the claim was deemed by DOLI to be valid | Character: X if valid, missing if not  |  |
-|14 Informal Resolution  | Whether the claim was resulted in an informal resolution between the employer and complainant | Character: X if true, missing if false |  |
+|14 Informal Resolution  | Whether an informal resolution between the employer and complainantthe claim was attempted | Character: X if true, missing if false |  |
 |15 Bankrupt | Whether the claim is being made against a bankrupt employer | Character: X if true, missing if false | This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)  |
 |16 Invalid  | Whether DOLI disqualified the claim for one of the following reasons:  | Character: X if true, missing if false  |  |
 |17 Fringe Benefits  | Whether DOLI disqualified the claim because it deals with contractual payments beyond a base salary | Character: X if true, missing if false  | This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/) |
@@ -36,7 +36,7 @@ The following table describes each variable in the raw data:
 |20 False Claim  | Whether DOLI determined that the claim is false | Character: X if true, missing if false  |  |
 |21 Other  | Whether DOLI determined that the claim is invalid for another reason | Character: X if true, missing if false  | This is one of the reasons DOLI as outside their jurisdiction (https://www.doli.virginia.gov/labor-law/payment-of-wage-english/)  |
 |22 CLAIM INVAL OTHER DESCRIPTION  | The stated reason DOLI found a claim invalid if "other" | Character  |  |
-|23 Claim Validity | Whether an undetermined claim is valid | Character: X if true, missing if false  | A claim is "undetermined" if DOLI finds that it cannot enforce a descision even if a claim is valid. |
+|23 Claim Validity | Whether an undetermined claim is valid | Character: X if true, missing if false  |   An “invalid” claim is one where the investigator can dismiss it by just looking at the claim form. (E.g., the worker said “I am an independent contractor” or left some critical part of the form blank).  A claim whose validity is “undetermined” means this: if everything the worker says on the claim form turned out to be true, the claim would be valid. But after investigating, DOLI believes that there is not enough evidence to determine whether everything the worker says on the claim form is in fact true (i.e., DOLI believes that the worker hasn’t met their burden of proof on some critical part of the claim). |
 |24 Employer left State  | Whether a claim is undetermined because the employer left the state | Character: X if true, missing if false  | See above |
 |25 Employer Cannot be Located | Whether a claim is undetermined because the employer cannot be located | Character: X if true, missing if false  | See above |
 |26 Complainant Cannot be Located  | Whether a claim is undetermined because the complainant cannot be located | Character: X if true, missing if false  | See above |
@@ -66,7 +66,7 @@ The following table describes each variable in the raw data:
 |50 DISMISSED_1  |  | All missing |  |
 |51 NON-SUITED_1 |  | All missing |  |
 |52 CIVCOURTDTE FOR WAGES/PENALTY  |  | All missing |  |
-|53 ****TOT AMT****  | Total amount recovered for the complainant | Character (but easily converted to numeric)  |  |
+|53 ****TOT AMT****  | Total amount recovered for the complainant | Character (but easily converted to numeric)  | These columns show the cases where DOLI is successful in collecting wages |
 |54 ****WAGE AMT**** | Amount recovered in lost wages for the complainant | Character (but easily converted to numeric)  |  |
 |55 INTEREST AMT | Amount recovered in interest on lost wages for the complainant | Character (but easily converted to numeric)  |  |
 |56 ATTY FEES  | Amount recovered in reimbursed attorney fees for the complainant | Character (but easily converted to numeric)  |  |

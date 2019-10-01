@@ -39,7 +39,7 @@ One version of a cleaned dataset is also stored here, as **lajc_clean.csv**.
 ## Goals
 Here's a list of the immediate goals the LAJC wants us to work on. Feel free to focus on one of them, or more if you have time. Also, as you work on the data, you might have ideas for additional goals, and **you should feel free to pursue your ideas.**
 
-### Goal 1:Create a map dividing Virginia into eight regions, showing the number/% of cases where the employer is located in each region.
+### Goal 1: Create a map dividing Virginia into eight regions, showing the number/% of cases where the employer is located in each region.
 Please use the demographic regions used by UVA’s Cooper Center for Public Service, available here https://demographics.coopercenter.org/virginia-regions. (Also note the number/% of cases where the employer is out of state, and the number/% of cases where the employer’s location can’t be determined.)
 
 ### Goal 2: A table showing a comprehensive overview of the reasons that DOLI has rejected cases over the last five years.

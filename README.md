@@ -47,30 +47,18 @@ Please use the demographic regions used by UVA’s Cooper Center for Public Serv
 This unfortunately may require a human being to look over the various reasons for dismissal listed in the “Other” columns (columns 21 and 31) and determine how to code each one. This may require a little independent judgment in some cases. For example, DOLI will reject a case if the worker is seeking over $15,000. One DOLI investigator may note this as "$15,000 limit," while another may write "exceeds maximum claim amount." 
 
 The reasons for dismissal that LAJC is most interested are these:
-
   * The business is closed / out of business (this is different from “business bankrupt”)
-
   * The worker had a written employment agreement
-
   * The worker worked overtime in at least one week
-
   * The work was performed outside of Virginia
-
   * The worker is seeking tips or was a tipped employee
-
-   * The claim amount is over $15,000
-   
+  * The claim amount is over $15,000  
   * The worker hired an attorney (this is different from “the worker filed a lawsuit”)
-
   * The worker did not demand the wages from the employer before filing a complaint with DOLI
-
   * The worker was an independent agent/subcontractor/self-employed or DOLI was otherwise unable to establish an employer-employee relationship
-
   * Errors with the claim form (e.g. the form was incomplete, or the worker didn’t provide an exact claim amount, or the worker signed in pencil rather than in pen, etc.)
-
   * The claim seeks minimum wages
-
-But please track the other reasons as well! (E.g., complainant can’t be found / worker dropped or withdrew their claim / worker got paid / 2-year statute of limitations / insufficient documentation to proceed, etc.)
+  * But please track the other reasons as well! (E.g., complainant can’t be found / worker dropped or withdrew their claim / worker got paid / 2-year statute of limitations / insufficient documentation to proceed, etc.)
 
 3. **A figure or table to tell us about case duration**: (Open Date to Case Closed). LAJC is particularly interested in:
 
@@ -95,18 +83,12 @@ But please track the other reasons as well! (E.g., complainant can’t be found 
   * Number of cases where DOLI took the employer to court (civil or criminal)
 
 5. **A figure or table to tell us about money recovered**
+  * Number/% of cases where DOLI recovered some money for the worker
+  * In cases where DOLI recovers some money, what’s the average/mean/modal amount recovered? (in terms of wages, interest, and wages-plus-interest).
+  * If possible, I’d also like to see this data broken down by each year. (For example, if DOLI recovered all these wages in 2017 and recovered nothing in the other years, that’d be interesting to know).
 
-                                                               i.      Number/% of cases where DOLI recovered some money for the worker
-
-                                                             ii.      In cases where DOLI recovers some money, what’s the average/mean/modal amount recovered? (in terms of wages, interest, and wages-plus-interest).
-
-                                                           iii.      If possible, I’d also like to see this data broken down by each year. (For example, if DOLI recovered all these wages in 2017 and recovered nothing in the other years, that’d be interesting to know).
-
- 
-
-        Some way to make the data publicly accessible/searchable/manipulable
+6. **Some way to make the data publicly accessible/searchable/manipulable**, possibly through a web-based platform.
                             
-
 
 ## How to Use GitHub
 ### If you are already familiar with GitHub (and Git)

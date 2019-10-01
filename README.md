@@ -73,7 +73,7 @@ The reasons for dismissal that LAJC is most interested are these:
     * 91-120 days open
     * Over 120 days open
 
-4. **A figure or table to telln us about case processing**
+4. **A figure or table to tell us about case processing**
 
   * Number/% of cases closed after a first-response investigation
   * Number/% of cases closed after a formal investigation, or an informal investigation

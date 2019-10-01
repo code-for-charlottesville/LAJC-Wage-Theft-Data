@@ -1,0 +1,4 @@
+
+elasticsearch:
+  hosts:
+      - http://es:9200

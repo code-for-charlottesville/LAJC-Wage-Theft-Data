@@ -6,30 +6,28 @@ library(leaflet)
 library(magrittr)
 library(tidyverse)
 
-dat <- read.csv("Raw data/lajc_clean.csv")
+dat <- read_csv("Raw data/lajc_clean.csv")
 
 regions <- read_csv("Raw data/county_region.csv") %>% 
   slice(-(134:141)) %>% 
-  mutate(type = gsub("Cities", "city", type) %>% 
-           gsub("Counties", "county", .)) %>% 
+  mutate(type = str_replace(type, "Cities", "city") %>% 
+           str_replace("Counties", "county")) %>% 
   unite(name, name, type, sep = " ") %>% 
   mutate(name = tolower(name))
 
 # run this block once to save API calls
 # options(tigris_use_cache = TRUE)
-# va <- get_acs(
-#   state = "VA", geography = "county",
-#   variables = "B19013_001", geometry = TRUE
-#   )
+va <- get_acs(
+  state = "VA", geography = "county",
+  variables = "B19013_001", geometry = TRUE
+  )
+
+st_write(va, "Raw data/va.shp")
 
 va_clean <- va %>% 
   rename_all(snakecase::to_snake_case) %>% 
   separate(name, c("name", "state"), sep = ", ") %>% 
   mutate(name = tolower(name))
-  # mutate(name = gsub("(county)|(city)", "", name, ignore.case = TRUE) %>%
-  #          trimws() %>% 
-  #          gsub("^James$", "James City", .) %>% 
-  #          gsub("^Charles$", "Charles City", .))
 
 anti_join(va_clean, regions)
 anti_join(regions, va_clean)

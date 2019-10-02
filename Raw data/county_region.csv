@@ -1,0 +1,142 @@
+﻿region,name,type
+Central,Charlottesville,Cities
+Central,Colonial Heights,Cities
+Central,Hopewell,Cities
+Central,Petersburg,Cities
+Central,Richmond,Cities
+Central,Albemarle,Counties
+Central,Amelia,Counties
+Central,Caroline,Counties
+Central,Charles City,Counties
+Central,Chesterfield,Counties
+Central,Dinwiddie,Counties
+Central,Fluvanna,Counties
+Central,Goochland,Counties
+Central,Greene,Counties
+Central,Hanover,Counties
+Central,Henrico,Counties
+Central,King William,Counties
+Central,Louisa,Counties
+Central,Madison,Counties
+Central,Nelson,Counties
+Central,New Kent,Counties
+Central,Orange,Counties
+Central,Powhatan,Counties
+Central,Prince George,Counties
+West Central,Lynchburg,Cities
+West Central,Radford,Cities
+West Central,Roanoke,Cities
+West Central,Salem,Cities
+West Central,Amherst,Counties
+West Central,Appomattox,Counties
+West Central,Bedford,Counties
+West Central,Botetourt,Counties
+West Central,Campbell,Counties
+West Central,Craig,Counties
+West Central,Floyd,Counties
+West Central,Franklin,Counties
+West Central,Giles,Counties
+West Central,Montgomery,Counties
+West Central,Pulaski,Counties
+West Central,Roanoke,Counties
+Southside,Danville,Cities
+Southside,Emporia,Cities
+Southside,Franklin,Cities
+Southside,Martinsville,Cities
+Southside,Brunswick,Counties
+Southside,Buckingham,Counties
+Southside,Charlotte,Counties
+Southside,Cumberland,Counties
+Southside,Greensville,Counties
+Southside,Halifax,Counties
+Southside,Henry,Counties
+Southside,Lunenburg,Counties
+Southside,Mecklenburg,Counties
+Southside,Nottoway,Counties
+Southside,Patrick,Counties
+Southside,Pittsylvania,Counties
+Southside,Prince Edward,Counties
+Southside,Southampton,Counties
+Southside,Sussex,Counties
+Hampton Roads,Chesapeake,Cities
+Hampton Roads,Hampton,Cities
+Hampton Roads,Newport News,Cities
+Hampton Roads,Norfolk,Cities
+Hampton Roads,Poquoson,Cities
+Hampton Roads,Portsmouth,Cities
+Hampton Roads,Suffolk,Cities
+Hampton Roads,Virginia Beach,Cities
+Hampton Roads,Williamsburg,Cities
+Hampton Roads,Gloucester,Counties
+Hampton Roads,Isle of Wight,Counties
+Hampton Roads,James City,Counties
+Hampton Roads,Mathews,Counties
+Hampton Roads,Surry,Counties
+Hampton Roads,York,Counties
+Eastern,Accomack,Counties
+Eastern,Essex,Counties
+Eastern,King and Queen,Counties
+Eastern,Lancaster,Counties
+Eastern,Middlesex,Counties
+Eastern,Northampton,Counties
+Eastern,Northumberland,Counties
+Eastern,Richmond,Counties
+Eastern,Westmoreland,Counties
+Southwest,Bristol,Cities
+Southwest,Galax,Cities
+Southwest,Norton,Cities
+Southwest,Bland,Counties
+Southwest,Buchanan,Counties
+Southwest,Carroll,Counties
+Southwest,Dickenson,Counties
+Southwest,Grayson,Counties
+Southwest,Lee,Counties
+Southwest,Russell,Counties
+Southwest,Scott,Counties
+Southwest,Smyth,Counties
+Southwest,Tazewell,Counties
+Southwest,Washington,Counties
+Southwest,Wise,Counties
+Southwest,Wythe,Counties
+Northern,Alexandria,Cities
+Northern,Fairfax,Cities
+Northern,Falls Church,Cities
+Northern,Fredericksburg,Cities
+Northern,Manassas,Cities
+Northern,Manassas Park,Cities
+Northern,Arlington,Counties
+Northern,Clarke,Counties
+Northern,Culpeper,Counties
+Northern,Fairfax,Counties
+Northern,Fauquier,Counties
+Northern,King George,Counties
+Northern,Loudoun,Counties
+Northern,Prince William,Counties
+Northern,Rappahannock,Counties
+Northern,Spotsylvania,Counties
+Northern,Stafford,Counties
+Northern,Warren,Counties
+Valley,Buena Vista,Cities
+Valley,Covington,Cities
+Valley,Harrisonburg,Cities
+Valley,Lexington,Cities
+Valley,Staunton,Cities
+Valley,Waynesboro,Cities
+Valley,Winchester,Cities
+Valley,Alleghany,Counties
+Valley,Augusta,Counties
+Valley,Bath,Counties
+Valley,Frederick,Counties
+Valley,Highland,Counties
+Valley,Page,Counties
+Valley,Rockbridge,Counties
+Valley,Rockingham,Counties
+Valley,Shenandoah,Counties
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,

@@ -1,0 +1,780 @@
+# https://github.com/GoogleCloudPlatform/click-to-deploy/tree/master/k8s/elastic-gke-logging
+---
+# Source: elastic-gke-logging/templates/elasticsearch-manifests.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lajc-configmap
+  labels:
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: elasticsearch-server
+data:
+  elasticsearch.yml: |
+    cluster.name: "${CLUSTER_NAME}"
+    node.name: "${NODE_NAME}"
+
+    path.data: /usr/share/elasticsearch/data
+    path.repo: ["${BACKUP_REPO_PATH}"]
+
+    network.host: 0.0.0.0
+
+    discovery.zen.minimum_master_nodes: 2
+    discovery.zen.ping.unicast.hosts: ${DISCOVERY_SERVICE}
+  log4j2.properties: |
+    status = error
+
+    appender.console.type = Console
+    appender.console.name = console
+    appender.console.layout.type = PatternLayout
+    appender.console.layout.pattern = [%d{ISO8601}][%-5p][%-25c{1.}] %marker%m%n
+
+    rootLogger.level = info
+    rootLogger.appenderRef.console.ref = console
+---
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: lajc-elasticsearch
+  labels: &ElasticsearchDeploymentLabels
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: elasticsearch-server
+spec:
+  selector:
+    matchLabels: *ElasticsearchDeploymentLabels
+  serviceName: lajc-elasticsearch-svc
+  replicas: 1
+  updateStrategy:
+    # The procedure for updating the Elasticsearch cluster is described at
+    # https://www.elastic.co/guide/en/elasticsearch/reference/current/rolling-upgrades.html
+    type: OnDelete
+  template:
+    metadata:
+      labels: *ElasticsearchDeploymentLabels
+    spec:
+      terminationGracePeriodSeconds: 180
+      initContainers:
+      # This init container sets the appropriate limits for mmap counts on the hosting node.
+      # https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html
+      - name: set-max-map-count
+        image: marketplace.gcr.io/google/elastic-gke-logging/ubuntu16_04@sha256:48e6eb686514d3cb1cbc6dbd874ff93154e8cf15d17123e8f1d521437cd5f93e
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+        command:
+        - /bin/bash
+        - -c
+        - 'if [[ "$(sysctl vm.max_map_count --values)" -lt 262144 ]]; then sysctl -w vm.max_map_count=262144; fi'
+      containers:
+      - name: elasticsearch
+        image: marketplace.gcr.io/google/elastic-gke-logging@sha256:b4b10270f321d17232c0fe151615900881163fb66a9ae285cca848b46ac35fa6
+        imagePullPolicy: Always
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: ES_JAVA_OPTS
+          value: -Xms1536m -Xmx1536m
+        - name: CLUSTER_NAME
+          value: "lajc-cluster"
+        - name: DISCOVERY_SERVICE
+          value: "lajc-elasticsearch-svc"
+        - name: BACKUP_REPO_PATH
+          value: ""
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 4Gi
+          requests:
+            cpu: 100m
+            memory: 1536Mi
+        ports:
+        - name: exporter
+          containerPort: 9114
+        - name: http
+          containerPort: 9200
+        - name: tcp-transport
+          containerPort: 9300
+        volumeMounts:
+        - name: configmap
+          mountPath: /etc/elasticsearch/elasticsearch.yml
+          subPath: elasticsearch.yml
+        - name: configmap
+          mountPath: /etc/elasticsearch/log4j2.properties
+          subPath: log4j2.properties
+        - name: lajc-elasticsearch-pvc
+          mountPath: /usr/share/elasticsearch/data
+        readinessProbe:
+          httpGet:
+            path: /_cluster/health?local=true
+            port: 9200
+          initialDelaySeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - /usr/bin/pgrep
+            - -x
+            - "java"
+          initialDelaySeconds: 5
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 4Gi
+          requests:
+            cpu: 100m
+            memory: 1536Mi
+      
+      volumes:
+      - name: configmap
+        configMap:
+          name: "lajc-configmap"
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values: ["lajc"]
+              - key: app.kubernetes.io/component
+                operator: In
+                values: ["elasticsearch-server"]
+            topologyKey: "kubernetes.io/hostname"
+  volumeClaimTemplates:
+  - metadata:
+      name: lajc-elasticsearch-pvc
+      labels:
+        app.kubernetes.io/name: "lajc"
+        app.kubernetes.io/component: elasticsearch-server
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: standard
+      resources:
+        requests:
+          storage: 20Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lajc-elasticsearch-svc
+  labels:
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: elasticsearch-server
+spec:
+  ports:
+  - name: http
+    port: 9200
+  - name: tcp-transport
+    port: 9300
+  selector:
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: elasticsearch-server
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lajc-elasticsearch-exporter-svc
+  labels:
+    app.kubernetes.io/name: lajc
+    app.kubernetes.io/component: elasticsearch-server
+spec:
+  ports:
+  - name: exporter
+    port: 9114
+  selector:
+    app.kubernetes.io/name: lajc
+    app.kubernetes.io/component: elasticsearch-server
+  clusterIP: None
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: lajc-kibana
+  labels: &KibanaDeploymentLabels
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: kibana-server
+spec:
+  selector:
+    matchLabels: *KibanaDeploymentLabels
+  replicas: 1
+  template:
+    metadata:
+      labels: *KibanaDeploymentLabels
+    spec:
+      containers:
+      - name: kibana
+        image: marketplace.gcr.io/google/elastic-gke-logging/kibana@sha256:d63564099bb657f212e9ff93f85876e3a977ff1d873c70fa1a7a52eecbf836a9
+        imagePullPolicy: Always
+        env:
+        - name: ELASTICSEARCH_URL
+          value: "http://lajc-elasticsearch-svc:9200"
+        ports:
+        - name: http
+          containerPort: 5601
+        readinessProbe:
+          httpGet:
+            path: /api/status
+            port: 5601
+          initialDelaySeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /api/status
+            port: 5601
+          initialDelaySeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lajc-kibana-svc
+  labels:
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: kibana-server
+spec:
+  ports:
+  - name: http
+    port: 5601
+  selector:
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: kibana-server
+  type: ClusterIP
+
+---
+# Source: elastic-gke-logging/templates/fluentd-manifests.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lajc-fluentd-es-config
+  labels:
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: fluentd-es-logging
+data:
+  containers.input.conf: |-
+    <source>
+      @id fluentd-containers.log
+      @type tail
+      path /var/log/containers/*.log
+      pos_file /var/log/es-containers.log.pos
+      tag raw.kubernetes.*
+      read_from_head true
+      <parse>
+        @type multi_format
+        <pattern>
+          format json
+          time_key time
+          time_format %Y-%m-%dT%H:%M:%S.%NZ
+        </pattern>
+        <pattern>
+          format /^(?<time>.+) (?<stream>stdout|stderr) [^ ]* (?<log>.*)$/
+          time_format %Y-%m-%dT%H:%M:%S.%N%:z
+        </pattern>
+      </parse>
+    </source>
+    # Detect exceptions in the log output and forward them as one log entry.
+    <match raw.kubernetes.**>
+      @id raw.kubernetes
+      @type detect_exceptions
+      remove_tag_prefix raw
+      message log
+      stream stream
+      multiline_flush_interval 5
+      max_bytes 500000
+      max_lines 1000
+    </match>
+
+  system.input.conf: |-
+    <source>
+      @id systemd.log
+      @type systemd
+      tag systemd
+      read_from_head true
+      <storage>
+        @type local
+        persistent true
+        path /var/log/systemd.log.pos
+      </storage>
+      <entry>
+        field_map {"MESSAGE": "log", "_PID": ["process", "pid"], "_CMDLINE": "process", "_COMM": "cmd"}
+        field_map_strict false
+        fields_strip_underscores true
+        fields_lowercase true
+      </entry>
+    </source>
+
+    # Example:
+    # I1118 21:26:53.975789       6 proxier.go:1096] Port "nodePort for kube-system/default-http-backend:http" (:31429/tcp) was open before and is still needed
+    <source>
+      @id kube-proxy.log
+      @type tail
+      format multiline
+      multiline_flush_interval 5s
+      format_firstline /^\w\d{4}/
+      format1 /^(?<severity>\w)(?<time>\d{4} [^\s]*)\s+(?<pid>\d+)\s+(?<source>[^ \]]+)\] (?<log>.*)/
+      time_format %m%d %H:%M:%S.%N
+      path /var/log/kube-proxy.log
+      pos_file /var/log/es-kube-proxy.log.pos
+      tag kubeproxy
+      read_from_head true
+    </source>
+
+  monitoring.conf: |-
+    <source>
+      @type prometheus_output_monitor
+    </source>
+
+    <source>
+      @type prometheus
+      bind 0.0.0.0
+      port 24231
+      metrics_path /metrics
+    </source>
+
+  output.conf: |-
+    <filter kubeproxy>
+      @type record_transformer
+      enable_ruby
+      <record>
+        hostname ${ENV["HOSTNAME"]}
+      </record>
+    </filter>
+    
+    <filter **>
+      @type prometheus
+      <metric>
+        type counter
+        name fluentd_input_status_num_records_total
+        desc Total number of log entries generated by either application containers or system components
+      </metric>
+    </filter>
+
+    <filter kubernetes.**>
+      @type kubernetes_metadata
+    </filter>
+
+    <match **>
+      @id elasticsearch
+      @type elasticsearch
+      @log_level info
+      include_tag_key true
+      host lajc-elasticsearch-svc
+      port 9200
+       logstash_format true
+      <buffer>
+        @type file
+        path /var/log/fluentd-buffers/kubernetes.system.buffer
+        flush_mode interval
+        retry_type exponential_backoff
+        flush_thread_count 2
+        flush_interval 5s
+        retry_forever
+        retry_max_interval 30
+        chunk_limit_size 2M
+        queue_limit_length 8
+        overflow_action block
+      </buffer>
+    </match>
+---
+apiVersion: apps/v1beta2
+kind: DaemonSet
+metadata:
+  name: lajc-fluentd-es
+  labels: &FluentdLabels
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: fluentd-es-logging
+spec:
+  selector:
+    matchLabels: *FluentdLabels
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels: *FluentdLabels
+      # This annotation ensures that fluentd does not get evicted if the node
+      # supports critical pod annotation based priority scheme.
+      # Note that this does not guarantee admission on the nodes.
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ''
+    spec:
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      serviceAccountName: lajc-fluentdserviceaccount
+      containers:
+      - name: fluentd-es
+        image: marketplace.gcr.io/google/elastic-gke-logging/fluentd@sha256:8313636ae3dafda36729905e690bc800732d7f701f0fb491d84991e6fc264a32
+        env:
+        - name: FLUENTD_ARGS
+          value: --no-supervisor -q
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        resources:
+          limits:
+            memory: 500Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log
+        - name: varlibdockercontainers
+          mountPath: /var/lib/docker/containers
+          readOnly: true
+        - name: config-volume
+          mountPath: /etc/fluent/config.d
+        ports:
+        - containerPort: 24231
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: varlog
+        hostPath:
+          path: /var/log
+      - name: varlibdockercontainers
+        hostPath:
+          path: /var/lib/docker/containers
+      - name: config-volume
+        configMap:
+          name: lajc-fluentd-es-config
+
+---
+# Source: elastic-gke-logging/templates/kibana-manifests.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lajc-kibana-configmap
+  labels:
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: kibana-server
+data:
+  index-logstash.json: |-
+    {
+      "attributes": {
+        "title": "logstash-*",
+        "timeFieldName": "@timestamp"
+      }
+    }
+  search-gke-apps.json: |-
+    {
+      "attributes": {
+        "title": "GKE Apps logs",
+        "description": "",
+        "hits": 0,
+        "columns": [
+          "kubernetes.labels.app_kubernetes_io/name",
+          "kubernetes.namespace_name",
+          "kubernetes.pod_name",
+          "kubernetes.container_name",
+          "log"
+        ],
+        "sort": [
+          "@timestamp",
+          "desc"
+        ],
+        "version": 1,
+        "kibanaSavedObjectMeta": {
+          "searchSourceJSON": "{\"index\":\"logstash-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"query\":\"kubernetes.labels.app_kubernetes_io/name:*\",\"language\":\"kuery\"},\"filter\":[]}"
+        }
+      }
+    }
+  search-kubelet.json: |-
+    {
+      "attributes": {
+        "title": "kubelet logs",
+        "description": "",
+        "hits": 0,
+        "columns": [
+          "hostname",
+          "log"
+        ],
+        "sort": [
+          "@timestamp",
+          "desc"
+        ],
+        "version": 1,
+        "kibanaSavedObjectMeta": {
+          "searchSourceJSON": "{\"index\":\"logstash-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"query\":\"systemd_unit:\\\"kubelet.service\\\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        }
+      }
+    }
+  search-kube-proxy.json: |-
+    {
+      "attributes": {
+        "title": "kube-proxy logs",
+        "description": "",
+        "hits": 0,
+        "columns": [
+          "hostname",
+          "log"
+        ],
+        "sort": [
+          "@timestamp",
+          "desc"
+        ],
+        "version": 1,
+        "kibanaSavedObjectMeta": {
+          "searchSourceJSON": "{\"index\":\"logstash-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"query\":\"tag:\\\"kubeproxy\\\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        }
+      }
+    }
+  search-docker.json: |-
+    {
+      "attributes": {
+        "title": "docker logs",
+        "description": "",
+        "hits": 0,
+        "columns": [
+          "hostname",
+          "log"
+        ],
+        "sort": [
+          "@timestamp",
+          "desc"
+        ],
+        "version": 1,
+        "kibanaSavedObjectMeta": {
+          "searchSourceJSON": "{\"index\":\"logstash-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"query\":\"systemd_unit:\\\"docker.service\\\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        }
+      }
+    }
+  search-kernel.json: |-
+    {
+      "attributes": {
+        "title": "kernel logs",
+        "description": "",
+        "hits": 0,
+        "columns": [
+          "hostname",
+          "log"
+        ],
+        "sort": [
+          "@timestamp",
+          "desc"
+        ],
+        "version": 1,
+        "kibanaSavedObjectMeta": {
+          "searchSourceJSON": "{\"index\":\"logstash-*\",\"highlightAll\":true,\"version\":true,\"query\":{\"query\":\"transport:\\\"kernel\\\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        }
+      }
+    }
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: lajc-kibana
+  labels: &KibanaDeploymentLabels
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: kibana-server
+spec:
+  selector:
+    matchLabels: *KibanaDeploymentLabels
+  replicas: 1
+  template:
+    metadata:
+      labels: *KibanaDeploymentLabels
+    spec:
+      containers:
+      - name: kibana
+        image: marketplace.gcr.io/google/elastic-gke-logging/kibana@sha256:d63564099bb657f212e9ff93f85876e3a977ff1d873c70fa1a7a52eecbf836a9
+        imagePullPolicy: Always
+        env:
+        - name: ELASTICSEARCH_URL
+          value: "http://lajc-elasticsearch-svc:9200"
+        - name: KIBANA_DEFAULTAPPID
+          value: "discover"
+        ports:
+        - name: http
+          containerPort: 5601
+        readinessProbe:
+          httpGet:
+            path: /api/status
+            port: 5601
+          initialDelaySeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /api/status
+            port: 5601
+          initialDelaySeconds: 5
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: lajc-kibana-init-job
+  labels: &KibanaInitJobLabels
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: kibana-server-init
+spec:
+  template:
+    metadata:
+      labels: *KibanaInitJobLabels
+    spec:
+      initContainers:
+      - name: kibana-waiter
+        image: marketplace.gcr.io/google/elastic-gke-logging/ubuntu16_04@sha256:48e6eb686514d3cb1cbc6dbd874ff93154e8cf15d17123e8f1d521437cd5f93e
+        command: ['/bin/bash', '-c']
+        args:
+        - |
+          kibana_url="http://lajc-kibana-svc:5601"
+          apt-get update && apt-get install -y jq
+          echo "Waiting for Kibana..."
+          # Wait for Kibana API:
+          until curl --silent --max-time 5 \
+            ${kibana_url}/api/status \
+            | jq '.status.overall.state' \
+            | grep "green" > /dev/null; do
+            echo "Waiting for Kibana..."
+            sleep 5
+          done
+          echo "Kibana available."
+      containers:
+      - name: kibana-init
+        image: marketplace.gcr.io/google/elastic-gke-logging/ubuntu16_04@sha256:48e6eb686514d3cb1cbc6dbd874ff93154e8cf15d17123e8f1d521437cd5f93e
+        command: ['/bin/bash', '-c']
+        args: 
+        - |
+          kibana_url="http://lajc-kibana-svc:5601"
+          index_pattern_id="logstash-*"
+
+          # Create index pattern to catch 'logstash-*':
+          curl --fail -XPOST \
+            -H "Content-Type: application/json" -H "kbn-xsrf: anything" \
+            "${kibana_url}/api/saved_objects/index-pattern/${index_pattern_id}" \
+            -d"@/etc/kibana-config/index-logstash.json"
+          echo "Index created."
+
+          # Mark the 'logstash-*' pattern as default:
+          curl --fail -XPOST \
+            -H "Content-Type: application/json" -H "kbn-xsrf: anything" \
+            "${kibana_url}/api/kibana/settings/defaultIndex" \
+            -d"{\"value\":\"${index_pattern_id}\"}"
+          echo "Index set as default."
+
+          # Store saved searches:
+          for search_file in /etc/kibana-config/search-*.json; do
+            curl --fail -XPOST \
+              -H "Content-Type: application/json" -H "kbn-xsrf: anything" \
+              "${kibana_url}/api/saved_objects/search" \
+              -d"@${search_file}"
+            echo "Search for ${search_file} imported."
+          done
+        volumeMounts:
+        - name: config
+          mountPath: /etc/kibana-config
+      restartPolicy: Never
+      volumes:
+      - name: config
+        configMap:
+          name: lajc-kibana-configmap
+  backoffLimit: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lajc-kibana-svc
+  labels:
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: kibana-server
+spec:
+  ports:
+  - name: http
+    port: 5601
+  selector:
+    app.kubernetes.io/name: "lajc"
+    app.kubernetes.io/component: kibana-server
+  type: ClusterIP
+
+---
+# Source: elastic-gke-logging/templates/application.yaml
+---
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: "lajc"
+  namespace: "default"
+  annotations:
+    kubernetes-engine.cloud.google.com/icon: >-
+      data:image/png;base64,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
+    marketplace.cloud.google.com/deploy-info: '{"partner_id": "click-to-deploy-containers", "product_id": "elastic-gke-logging", "partner_name": "Google Click to Deploy"}'
+  labels:
+    app.kubernetes.io/name: "lajc"
+spec:
+  descriptor:
+    type: Elastic GKE Logging
+    version: '6.3'
+    description: |-
+      Elastic GKE Logging is an application that provides a fully functional solution for collecting
+      and analyzing logs from a Kubernetes cluster. It is built on top of popular open-source systems,
+      including Fluentd for logs collection and Elasticsearch with Kibana for searching and analyzing
+      data.
+
+      # Support
+      Google does not offer support for this solution. However, community support is available on
+      Stack Overflow for [Fluentd](https://stackoverflow.com/questions/tagged/fluentd/),
+      [Elasticsearch](https://stackoverflow.com/questions/tagged/elasticsearch/) and
+      [Kibana](https://stackoverflow.com/questions/tagged/kibana/).
+    maintainers:
+    - name: Google Click to Deploy
+      url: https://cloud.google.com/solutions/#click-to-deploy
+    links:
+    - description: 'User Guide: Google Click to Deploy Elastic GKE Logging'
+      url: https://github.com/GoogleCloudPlatform/click-to-deploy/tree/master/k8s/elastic-gke-logging/README.md
+    - description: 'Elasticsearch: Getting Started'
+      url: https://www.elastic.co/webinars/getting-started-elasticsearch
+    - description: 'Kibana official documentation'
+      url: https://www.elastic.co/guide/en/kibana/6.x/index.html
+    - description: 'Fluentd Quickstart Guide'
+      url: https://docs.fluentd.org/v1.0/articles/quickstart
+    notes: |-
+      # Access Kibana UI
+
+      By default, the Kibana Service does not have an external IP. To open Kibana UI you can
+      use `kubectl port-forward` and access the UI from your local machine.
+
+      Run the following command in background:
+
+      ```
+      kubectl port-forward -n default \
+        svc/lajc-kibana-svc 5601
+      ```
+
+      Open Kibana in your web browser with `http://localhost:5601/`.
+
+      # Discover the logs
+
+      ## Index Pattern
+
+      Your installation automatically adds a default Index Pattern to be tracked by Kibana - it
+      matches the Fluentd DaemonSet configuration and equals to `logstash-*`. Thanks to this
+      configuration you can view the logs from the Kubernetes cluster immediately after the
+      successful installation.
+
+      ## Saved searches
+
+      Kibana allows to save predefined searches with their filters and presented columns
+      configuration. To view the searches shipped with this installation, visit the `Discover` page
+      of Kibana and in the top menu, click on the `Open` option. It will present a list of some useful
+      searches, including logs from: GKE Apps, kubelet, docker, kernel and others.
+  info:
+  - name: Forward Kibana port locally
+    value: kubectl port-forward svc/lajc-kibana-svc -n default 5601
+  - name: Kibana UI URL
+    value: http://localhost:5601/
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: "lajc"
+  componentKinds:
+  - group: v1
+    kind: ConfigMap
+  - group: apps/v1beta2
+    kind: Deployment
+  - group: apps/v1beta2
+    kind: DaemonSet
+  - group: batch/v1
+    kind: Job
+  - group: v1
+    kind: PersistentVolumeClaim
+  - group: v1
+    kind: Service
+  - group: apps/v1beta2
+    kind: StatefulSet
+

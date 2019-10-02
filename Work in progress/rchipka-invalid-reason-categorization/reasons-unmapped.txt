@@ -1,0 +1,523 @@
+Business Partner
+Business Sold
+Cannot Determine Employer Employee Relationship
+Cannot Establish Employee/Employer Relationship
+Case Involves Overtime
+Case Involves Tips and Discretionary Bonus
+Case Reassigned
+Case Reassignment
+Case Suspended Until Claimant Can Call Department.
+City Employee
+Claim Amount Is over $15,000 and Claim Period Is over 2 Years Old
+Claim Amount Not Included
+Claim Closed Due to False Claim, Claimant Previously Paid.
+Claim Exceeds 2 Year Limit for Acceptance
+Claim Exceeds the 2 Year Limit
+Claim Form Faxed
+Claim Form Incomplete
+Claim Form Incomplete.
+Claim Form Is a Copy.
+Claim Form Not Signed in Ink
+Claim Form Was Copied
+Claim Incomplete, No Date Range Given.
+Claim Involved Overtime.
+Claim Involved Tips
+Claim Involves Benefits
+Claim Involves Minimum Wage/Overtime.
+Claim Involves Not Making Minimum Wage.
+Claim Involves Overtime
+Claim Involves Overtime.
+Claim Involves Significant Overtime.
+Claim Involves Tips
+Claim Involves Tips and Min Wage
+Claim Involves Tips and Overtime.
+Claim Involving Overtime
+Claim Is for Overtime Hours and Regular Hours
+Claim Is for Tips
+Claim Is for over $15,000
+Claim Is for over $15,000.
+Claim Is over 2 Years Old.
+Claim Not Signed and Claimant Seeking Overtime Pay
+Claim Not Signed/Dated
+Claim Period over 2 Year Limit for Acceptance
+Claim Period over 2 Years Ago and Claimant Marked Self Employed
+Claim Reassigned
+Claim Relates to Overtime.
+Claim Reopened After Employer Audit of Records
+Claim Spans 6 Years.
+Claim Superceded by New Claim
+Claim for Pay Statement, Not Wages
+Claimant Advised He Had a Written Contract.
+Claimant Alread Filed in Court Against the Employer
+Claimant Already Filed in Court
+Claimant Already Filed in Court.
+Claimant Called to Say Issue Had Been Resolved
+Claimant Cannot Prove Employment
+Claimant Could Provide No Documentation.
+Claimant Currently Has Pending Criminal Charges.
+Claimant Did Not Attach, but Indicated They Had a Written Employment Agreement
+Claimant Did Not Correctly Fill out Form, Needs More Info
+Claimant Did Not Demand His Unpaid Wages
+Claimant Did Not Demand Their Wages
+Claimant Did Not Demand Wages
+Claimant Did Not Give a Claim Amount
+Claimant Did Not Include Claim Total.
+Claimant Did Not Include Gross Claim Amount
+Claimant Did Not Include Total Amount of Unpaid Wages
+Claimant Did Not Include Total Gross Amount of Unpaid Wages
+Claimant Did Not Include a Claim Total.
+Claimant Did Not Include a Gross Claim
+Claimant Did Not Include a Time Period for Unpaid Wages.
+Claimant Did Not Include a Time Period or Claim Amount.
+Claimant Did Not Include a Time Period.
+Claimant Did Not Include the Total Gross Amount of Unpaid Wages
+Claimant Did Not Indicate Claim Amount
+Claimant Did Not Indicate the Total Amount of Unpaid Wages.
+Claimant Did Not Provide Claim Period/Gross Claim Amount
+Claimant Did Not Provide Department with Written Employment Agreement.
+Claimant Did Not Respond to 5 Day Letter
+Claimant Did Not Sign Form
+Claimant Did Not Sign the Claim Form.
+Claimant Did Not Specify a Claim Range and Claim Amount
+Claimant Did Not Unclude Signature
+Claimant Entered into Settlement with Employer.
+Claimant Expressed That He Was Going to Hire an Attorney.
+Claimant Failed to Fill out Page 2 of Claim Form
+Claimant Failed to Provide Documentation
+Claimant Failed to Provide a Claim Period and Total.
+Claimant Filed a Court Case
+Claimant Filed in Court
+Claimant Filed in Court.
+Claimant Filled out Form Incorrectly.
+Claimant Had Written Contract
+Claimant Had Written Employment Agreement.
+Claimant Had a Written Employment Agreement
+Claimant Had a Written Employment Agreement and Hired a Lawyer
+Claimant Had a Written Employment Agreement.
+Claimant Has Civil Suit Against Employer.
+Claimant Has Filed in Loudoun County Court
+Claimant Has No Documentation of Time Worked.
+Claimant Has Not Been Paid at Higher Rate
+Claimant Has Not Demanded Wages
+Claimant Has Not Yet Demanded His Wages.
+Claimant Has Not Yet Demanded Payment of Wages on Their Own
+Claimant Has Not Yet Demanded Their Wages
+Claimant Has Not Yet Demanded Wages
+Claimant Has Not Yet Demanded Wages.
+Claimant Has Written Employment Agreement
+Claimant Has Written Employment Agreement and Is Tipped
+Claimant Has Written Employment Agreement and Worked on Military Base
+Claimant Has Yet to Demand His Wages.
+Claimant Has a Written Employment Agreement
+Claimant Has a Written Employment Agreement.
+Claimant Has a Wrtten Employment Agreement.
+Claimant Hired Attorney
+Claimant Hired a Lawyer
+Claimant Hired an Attorney
+Claimant Included Written Employment Agreement
+Claimant Included Written Employment Agreement.
+Claimant Included a Partial Written Employment Agreement.
+Claimant Included a Written Employment Agreement
+Claimant Included a Written Employment Agreement.
+Claimant Incorrectly Filled out Claim Form.
+Claimant Indicated Having a Written Emploment Agreement.
+Claimant Indicated Having a Written Employment Agreement.
+Claimant Indicated Having a Written Employment Agremeent.
+Claimant Indicated He Had a Written Employment Agreement
+Claimant Indicated He Had a Written Employment Agreement.
+Claimant Indicated He Has a Written Employment Agreement
+Claimant Indicated He Was Self Employed.
+Claimant Indicated He Was a Corporate Director, Owner or Partner in Business
+Claimant Indicated He Was a Corporate Director, Owner or Partner.
+Claimant Indicated She Had a Written Employment Agreement
+Claimant Indicated She Had a Written Employment Agreement.
+Claimant Indicated She Has a Written Employment Agreement
+Claimant Indicated She Has a Written Employment Agreement and Claim over $15,000
+Claimant Indicated She Has a Written Employment Agreement.
+Claimant Indicated That He Was Self Employed
+Claimant Indicated They Had a Written Employment Agreement
+Claimant Indicated They Had a Written Employment Agreement and Was Self Employed
+Claimant Indicated They Had a Written Employment Agreement.
+Claimant Indicated They Have a Written Employment Agreement
+Claimant Indicated the Filed a Court Case for Unpaid Wages.
+Claimant Indicating She Has a Written Employment Agreement
+Claimant Is Seeking Overtime
+Claimant Is Seeking Overtime Pay
+Claimant Is Seeking Overtime.
+Claimant Is Seeking Vac and Sick Pay
+Claimant Is Seeking over 1 Million Dollars
+Claimant Is Self Employed
+Claimant Is Self Employed, Has a Written Employment Agreement, Worked Outside VA
+Claimant Is Self Employed.
+Claimant Is Self Employed/Had a Written Agreement.
+Claimant Is Unable to Locate Any Documentation.
+Claimant Is Vp of Company
+Claimant Is a Director, Has a Written Agreement. And Hired a Lawyer.
+Claimant Is a Government Employee.
+Claimant Is a Government Worker
+Claimant Is a Public Employee and Has a Written Employment Agreement.
+Claimant Is a Tipped Employee
+Claimant Is a Tipped Employee.
+Claimant May Be Entitled to Overtime.
+Claimant Never Demanded Wages
+Claimant Noted They Have a Written Employment Agreement
+Claimant Paid a Bad Check.
+Claimant Performed Work Outside Virginia.
+Claimant Performed Work in Dc
+Claimant Performed Work in Many States
+Claimant Performed Work in Tuscon, Az.
+Claimant Performed Work on Federal Property.
+Claimant Performed Work on Military Installations.
+Claimant Performed Work on a Military Base
+Claimant Performed Work out of State
+Claimant Performed Work out of State.
+Claimant Performed the Work in Maryland.
+Claimant Performed the Work in North Carolina.
+Claimant Previously Said He Had a Written Employment Agreement
+Claimant Previously Submitted, Returned Due to Written Employment Agreement.
+Claimant Provided Written Employment Agreement
+Claimant Recd Funds from Employer for Vacation Time
+Claimant Represented by Attorney
+Claimant Represented by Counsel
+Claimant Requested Tips
+Claimant Seeking Minimum Wage + Tips
+Claimant Seeking Minimum Wage.
+Claimant Seeking Money Earned As a Tipped Employee.
+Claimant Seeking Ot Pay.
+Claimant Seeking Overtime Pay
+Claimant Seeking Overtime Pay.
+Claimant Seeking Regular Time and Overtime.
+Claimant Seeking Wages Under Minimum Wage.
+Claimant Submitted Incorrect Claim Form, Advised to Resubmit Corrected Form.
+Claimant Submitted Incorrectly Filled out Claim Form.
+Claimant Submitted No Documentation.
+Claimant Took the Employer to Court to Settle.
+Claimant Unable to Formulate Claim Amount
+Claimant Unable to Provide Claim Period.
+Claimant Unable to Provide Documentation.
+Claimant Unable to Provide Exact Claim Period/Gross Claim Amount.
+Claimant Unresponsive
+Claimant Used Vacation Time That Had Not Been Accrued, Was Owed 2.92 Hrs.
+Claimant Was Arrested for Crime Against the Business.
+Claimant Was Arrested for Theft from Employer.
+Claimant Was Employee of Public School System
+Claimant Was Overpaid by Employer
+Claimant Was Paid All Wages Owed.
+Claimant Was Paid All Wages Prior to Investigation.
+Claimant Was Paid All Wages by Employer Before Claim Was Made.
+Claimant Was Paid Before Investigation.
+Claimant Was Paid Correctly Due to Outstanding Draws
+Claimant Was Paid by Company
+Claimant Was Paid for 80 Hours That He Did Not Work While Hospitalized. Claim Wa
+Claimant Was Self Employed.
+Claimant Was Suspended by Employer and Not Eligible to Be Paid.
+Claimant Was Under Criminal Investigation and Paid Restitution in Lieu of Charge
+Claimant Was Vice President
+Claimant Was a Corporate Director.
+Claimant Worked for This Business As a Self Employed Person.
+Claimant Worked in Maryland.
+Claimant Worked in Multiple States
+Claimant Worked on Federal Property
+Claimant Worked on a Military Installation
+Claimant Worked out of State
+Claimant Works out of State
+Claimant's Employment Agreement Contained Arbitration Clause
+Claimant's Total Gross Amount Exceeds the $15,000 Limit
+Claimnant's Seeking Overtime
+Closed Fo Reassignment
+Closed Pending Vec Employment Determination.
+Closed for Reassignment
+Closed for Reassignment Rga
+Collective Bargaining Agreement
+Collective Bargaining Agrement
+Company Paid Wages
+Company Paid Wages Due
+Company Paid Wages See Llva60508
+Competing Interest
+Complainant Cannot Be Located
+Complainant Did Not Work Hours Claimed.
+Complainant Dropped Claim
+Complainant Failed to Respond to 5 Day Letter
+Conflicting Documentation
+Conflicting Documentation, No Written Commission Agreement.
+Conflicting Documentation.
+Corporate Director
+Corporate Director,Owner or Partner
+Corporate Director/Hired Atty
+Corporate Officer.
+Court Case
+Court Case Filed
+Court Case Is Pending
+Criminal Case Ongoing
+Criminal Charge
+Criminal Charges
+Criminal Charges Ongoing
+Criminal Charges Pending
+Criminal Matter
+Davis Bacon Pay Scale
+Did Not Demand Wages
+Did Not Provide Sufficient Documentation.
+Director, Officer, Owner or Partner
+Discrentionary Bonus
+Discretionary Bonus
+Documentation Indicates Claimant Has Been Paid.
+Duplicate Case
+Duplicate Case, See Llva60608
+Duplicate Case, See Llva60691.
+Duplicate Case, See Llva60713, Claim Involves Minimum Wage/Overtime
+Duplicate Claim, See Llva60767
+Employee Agreement
+Employer Cannot Be Located
+Employer Documentation Show Claimant Was Paid for All Commissions Due
+Employer Is Allowed to Raise or Lower Pay
+Employer Issued Bad Checks
+Employer Paid
+Employer Paid Wages
+Employer Paid Wages Due
+Employer Paid Wages Due Claimant
+Employer Paid Wages Owed
+Employer Paid Wages to Claimant.
+Employer Paid Wages.
+Employer Paid the Wages Due
+Employer Provided Documentation of Employee Overpayment
+Employer Provided Written Employment Agreement.
+Employer Provided a Written Employment Agreement.
+Employer Was Recovering Advanced Leave. Documented.
+Employer and Claimant Reached Settlement.
+Employment Agreement
+Employment Agreement in Place
+Exceeding 2 Year Limit for Acceptance
+Exceeds $15,000
+Exceeds Limit for Acceptance
+Exceeds Two Year Limit
+Expenses Are Not Collectable
+Fed Dept of Labor Already Decided the Claim
+Federal Investigation Pending (Fbi)
+Federal Property
+Filed Case with Wise General District Court
+Filed Court Case
+Filed a Court Case of Unpaid Wages
+Filed with Eeoc
+Fiscal Intermediary
+Fringe Benefits
+Government Employee
+Gross Claim Amount Exceeds Limit
+Has Not Demanded Wages/Incomplete Claim
+Hired Attorney
+Hired Lawyer
+Hired a Lawyer
+Hired an Attorney
+Included Written Employment Agreement
+Incomplete
+Incomplete Claim
+Incomplete Claim (Page 2 of 2 Only)
+Incomplete Claim Form
+Incomplete Claim Form.
+Incomplete Form
+Incomplete/Copy
+Incorrect Information on Claim Form.
+Independent Agent
+Indicated Employment Agreement
+Indicated Written Agreement on the Form
+Individual Liability Attached to Primary Case
+Insufficieint Information
+Insufficient Doc./Lack of Response from Claimant
+Insufficient Documentation
+Insufficient Documentation.
+Insufficient Documentation/Conflicting Information
+Insufficient Evidence
+Insufficient Information
+Invalid Claim
+Involves Minimum Wage
+Involves Overtime
+Involves Shift Differential Pay
+Irs Misclassification Investigation Pending
+Lack of Documentation
+Lack of Documentation from Claimant.
+Lack of Documentation.
+Lack of Required Documentation
+Lawyer Hired
+Lawyer Was Hired
+Loan/Advance
+Main Case Is Against Individual
+Mimimum Wage
+Min Wage Claim
+Min Wage/Tips
+Minimum Wage
+Minimum Wage Claim
+Misclassification Case
+Misclassification Investigation Pending
+Money Was Legally Taken from Hourly Wage and Claimant Was Notified by Employer.
+Multistate Work
+Neither Claimant or Employer Have Records.
+No Claim Amont
+No Claim Amount
+No Claim Amount Included
+No Claim Amount Included.
+No Claim Period
+No Claim Period Specified on Form
+No Claim Period; Claim Is a Photocopy
+No Commission Agreement
+No Doc. From Claimant/Employer Showed Claimaint Was Paid for Hrs. Worked.
+No Documentation
+No Employee/Employer Relationship
+No Employer Employee Relationship
+No Employer Employee Relationship Documentation
+No Employer Employee Relationship Documentation.
+No Employer's Address Included
+No Employer/Employee Relationship
+No Gross Amount
+No Gross Claim Amount
+No Gross Claim Amount.
+No Gross Claim Amount/Date Range.
+No Jurisdiction
+No Jurisdiction. All Work Was Performed in Connecticut
+No Jurisdiction/Mileage
+No Jursidiction
+No Legible Claim Amount
+No Precise Claim Amount
+No Total Gross Amount
+No Total Gross Amount Inlcuded
+No Violation of Payment of Wage Act
+No Wage Amount Included
+No Work Performed
+No Written Commission Agreement
+No Written Commission Agreement.
+Not Taken from Wages
+Note Discrepancies As Billable Hour Employee
+Officer/Director
+Ot Claim
+Out of Jurisdiction
+Outside Sales
+Outside Virginia
+Over $15,000 Limit
+Over 15,Ooo Limit
+Over 2 Year Limit
+Over 2 Yr Limit
+Over Claim Limit
+Over Two Year Limit
+Overpaid
+Overpayment
+Overpayment to Claimant
+Overtime
+Overtime Claim
+Overtime Claim.
+Overtime Involved
+Overtime Pay
+Overtime and Rate of Pay Difference
+Overtime.
+Overtime/Federal Property
+Overtime/Minimum Wage
+Overtime/Written Agreement
+Overtime; Taxes
+Paid
+Paid Previously
+Paid Prior to Investigation
+Partner in Company
+Pay Date Has Not Yet Passed
+Pending Charges
+Pending Criminal Matter/Insufficient Documentation
+Pending Misclassification
+Pending Misclassification Investigation
+Per Director Inge, Individiual Liablity Case Closed.
+Per Director Inge, Individual Liability Case Closed
+Per Director Inge, Individual Liability Case Closed.
+Per Director Inge, Individual Liability Investigation Closed
+Per Director Inge, Individual Liability Not Being Assessed.
+Performed Work Outside Virginia.
+Performed Work out of State
+Performed Work out of the State
+Personal Liability Waived Due to Claim Period
+Potential Misclassification
+Public Partnership
+Reassign to S Kennedy
+Reassign to S. Kennedy
+Received Documentation Indicates Claimant Was Paid.
+Received Pto Pay That Covers Owed Wages. Worked in Washington Dc
+Referred to Dmas
+Referred to Irs for Potential Misclassification
+Referred to Us Dol W/H Division Minimum Wage Issue.
+Referred to Vec for Employment Status Determination
+Related Criminal Arrest
+Returned for Additional Information
+Returned for Additional Information and Clarification
+Returned for Additional Information and Documentation
+See Companion Case
+Seeking Monies for Promise of a Raise After 90 Days
+Seeking Overtime Pay
+Seeking over $15,000/Written Agreement.
+Self Employed
+Sent to Dol W/H Due to Minimum Wage Issue
+Severance Pay
+Signed Contract
+Statute of Limitations
+Sub Minimum Wage
+Tax Issues
+Tipped Employee
+Tipped Employee/Min Wage
+Tipped Employee/Min Wage Claim
+Tipped Employee; No Documentation
+Tips
+Tips/Minimum Wage
+Total Amount of Unpaid Wages Not Included
+Total Gross Amount Not Included
+Total Gross Amount of Unpaid Wages Are Not Included
+Total Gross Amount of Unpaid Wages Not Included
+Total Gross Claim Amount Not Included
+Unable to Determine Employment Status
+Unable to Determine Employment Status.
+Unable to Establish Employee/Employer Relationship
+Unable to Establish Employer Employee Relationship
+Under Investigation by Medicaid Fraud
+Unestablished Relationship
+Union
+Vacation Pay
+Vacation Time Claim
+Vice President of Company
+Voided Sales & Sales Not Made by Claimant
+Wage Advancement
+Wages Not Demanded
+Wages Paid by Employer
+Wages Paid.
+Wages Were Not Demanded
+Work Not Performed in Virginia
+Work Performed More Than 2 Years Ago
+Work Performed Outside VA
+Work Performed Outside VA; Hired Lawyer
+Work Performed Outside Virginia
+Work Performed Outside of VA
+Work Performed Outside of Virgina
+Work Performed Outside of Virginia
+Work Performed Outside of Virginia.
+Work Performed in Ca
+Work Performed in Dc
+Work Performed in Ga
+Work Performed in Md
+Work Performed in Md and VA
+Work Performed in Multiple States
+Work Performed in Multiple States.
+Work Performed in Pa
+Work Performed in Question
+Work Performed on Federal Govt Property
+Work Performed on Federal Property
+Work Performed on Government Property
+Work Performed on Military Installation.
+Work Performed out of State
+Work Was Not Performed in Virginia
+Work Was Performed out of the State
+Worked Outside VA
+Worked Outside of Virginia
+Worked in Multiple States
+Worked in Washington, Dc
+Worked on Federal Property
+Worked on Us Naval Vessel
+Worked on a Base
+Worked out of State
+Written Agreement
+Written Agreement.
+Written Employment Ageement
+Written Employment Agreement
+Written Employment Agreement Included
+Written Employment Agreement Noted
+Written Employment Agreement.
+Wrong Employer

@@ -48,7 +48,7 @@ The following table describes each variable in the raw data:
 |32 ****VERIFIED CLAIM AMT**** | The total amount claimed after verification by DOLI | Character (but easily converted to numeric)  |  |
 |33 ****CASE CLOSE/RECLOSE DATE****  | Date case was officially closed | Character |  |
 |34 Employer Contested Valid Determination | Whether the employer contested a claim that was found to be valid | Character: X if true, missing if false  |  |
-|35 ****1st Response Investigation**** | Whether only a 1st response was conducted | Character: X if true, missing if false  | DOLI conducts a quick "1st response" investiagtion first to determine if a formal investigation is warranted |
+|35 ****1st Response Investigation**** | Whether only a 1st response was conducted | Character: X if true, missing if false  | DOLI conducts a quick "1st response" investigation first to determine if a formal investigation is warranted |
 |36 ****Formal Investigation**** | Whether a formal investigation was conducted | Character: X if true, missing if false  |  |
 |37 Request Settlement Conference  |  | All missing | No such requests in the data  |
 |38 Request Informal Fact Finding  |  | All missing  | No such requests in the data  |

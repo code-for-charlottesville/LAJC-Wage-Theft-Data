@@ -1,0 +1,311 @@
+---
+title: "LAJC Wage Theft Data"
+author: 'Jon Kropko -- Code for Charlottesville'
+date: "10/1/2019"
+output: 
+     html_document:
+          toc: TRUE
+          toc_depth: 4
+          toc_float: true
+          toc_collapsed: true
+          theme: journal
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r lib, warning=FALSE, message=FALSE}
+library(knitr)
+library(lubridate)
+library(tidyverse)
+```
+
+## Raw data
+First I load the raw data.
+```{r loaddata}
+wagetheft <- read_csv("lajc_wage_claim.csv")
+```
+
+## Goal 2: A table showing a comprehensive overview of the reasons that DOLI has rejected cases over the last five years.
+For each reason, we’d like to know the number of cases dismissed on this basis (for example: "47 cases were dismissed because the worker worked some overtime"). (Some cases have more than one reason for dismissal.)
+
+This unfortunately may require a human being to look over the various reasons for dismissal listed in the “Other” columns (columns 21 and 31) and determine how to code each one. This may require a little independent judgment in some cases. For example, DOLI will reject a case if the worker is seeking over $15,000. One DOLI investigator may note this as "$15,000 limit," while another may write "exceeds maximum claim amount." 
+
+The reasons for dismissal that LAJC is most interested are these:
+
+  * The business is closed / out of business (this is different from “business bankrupt”)
+  
+  * The worker had a written employment agreement
+  
+  * The worker worked overtime in at least one week
+  
+  * The work was performed outside of Virginia
+  
+  * The worker is seeking tips or was a tipped employee
+  
+  * The claim amount is over $15,000  
+  
+  * The worker hired an attorney (this is different from “the worker filed a lawsuit”)
+  
+  * The worker did not demand the wages from the employer before filing a complaint with DOLI
+  
+  * The worker was an independent agent/subcontractor/self-employed or DOLI was otherwise unable to establish an employer-employee relationship
+  
+  * Errors with the claim form (e.g. the form was incomplete, or the worker didn’t provide an exact claim amount, or the worker signed in pencil rather than in pen, etc.)
+  
+  * The claim seeks minimum wages
+  
+  * But please track the other reasons as well! (E.g., complainant can’t be found / worker dropped or withdrew their claim / worker got paid / 2-year statute of limitations / insufficient documentation to proceed, etc.)
+  
+## Data cleaning
+I first keep only the variables I need for this work:
+```{r clean}
+wagetheft <- wagetheft %>%
+  select(`CLAIM NO`, Invalid:`CLAIM INVAL OTHER DESCRIPTION`)
+```
+I suspect that only one reason is given for any judgement that a claim is fund to be invalid. But to confirm this, I check whether there is ever more than one non-missing cell for the "Fringe Benefits", "Independent Agent", "Subcontractor", "False Claim", and "Other" variables.
+```{r nonmissing}
+check <- !is.na(select(wagetheft, `Fringe Benefits`:Other))
+table(rowSums(check))
+```
+This check shows that `sum(rowSums(check))` observations have exactly 1 stated reason for a judgement of an invalid claim, and the other `sum(1-rowSums(check))` observations are not marked invalid. No case has more than one reason listed for being invalid.
+
+## Bringing the categories into one column
+To make a publishable-quality table, I need to create one variable that combines all of these reasons:
+```{r onevariable}
+wagetheft <- wagetheft %>%
+  mutate(invalid_reason = as.numeric(!is.na(`Fringe Benefits`)) +
+           2*as.numeric(!is.na(`Independent Agent`)) + 3*as.numeric(!is.na(Subcontractor)) +
+           4*as.numeric(!is.na(`False Claim`)) + 5*as.numeric(!is.na(Other)),
+         invalid_reason = factor(invalid_reason),
+         invalid_reason = fct_recode(invalid_reason,
+                                     "Not found invalid" = "0",
+                                     "Fringe benefits" = "1",
+                                     "Independent agent" = "2",
+                                     "Subcontractor" = "3",
+                                     "False claim" = "4",
+                                     "Other" = "5"))
+table(wagetheft$invalid_reason)
+```
+However, before we can move forward with a complete table, we need to delve into the reasons stated under "Other". These reasons are listed in "CLAIM INVAL OTHER DESCRIPTION":
+```{r other}
+kable(table(wagetheft$`CLAIM INVAL OTHER DESCRIPTION`))
+```
+We need to recode these reasons in the main `invalid_reason` variable. I write a function to do this efficiently:
+```{r othercats}
+other <- function(old, new){
+  wagetheft <- wagetheft %>%
+  mutate(invalid_reason = ifelse(`CLAIM INVAL OTHER DESCRIPTION`==old, new, invalid_reason))
+  return(wagetheft)
+}
+```
+I then apply this function to the reasons listed in the data:
+```{r otherapply}
+wagetheft <- wagetheft %>%
+  mutate(`CLAIM INVAL OTHER DESCRIPTION` = fct_recode(`CLAIM INVAL OTHER DESCRIPTION`,)
+         "" ="CANNOT ESTABLISH EMPLOYEE/EMPLOYER RELATIONSHIP",
+         "" ="WORK PERFORMED OUTSIDE OF VA",
+         "" ="EMPLOYMENT AGREEMENT",
+         "" ="WORK PERFORMED OUTSIDE OF VIRGINA",
+         "" ="WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="NO GROSS CLAIM AMOUNT",
+         "" ="NO EMPLOYEE/EMPLOYER RELATIONSHIP",
+         "" ="CORPORATE DIRECTOR/HIRED ATTY",
+         "" ="HIRED LAWYER",
+         "" ="WAGES NOT DEMANDED",
+         "" ="INVOLVES OVERTIME",
+         "" ="WORK PERFORMED OUTSIDE OF VIRGINIA",
+         "" ="WORKED OUTSIDE OF VIRGINIA",
+         "" ="WORKED ON A BASE",
+         "" ="DIRECTOR, OFFICER, OWNER OR PARTNER",
+         "" ="CITY EMPLOYEE",
+         "" ="SELF EMPLOYED",
+         "" ="CLAIMANT RECD FUNDS FROM EMPLOYER FOR VACATION TIME",
+         "" ="SELF-EMPLOYED",
+         "" ="OVERTIME/WRITTEN AGREEMENT",
+         "" ="NO CLAIM PERIOD",
+         "" ="TIPPED EMPLOYEE",
+         "" ="COLLECTIVE BARGAINING AGREEMENT",
+         "" ="COLLECTIVE BARGAINING AGREMENT",
+         "" ="CLAIMANT DID NOT SIGN FORM",
+         "" ="CLAIMANT DID NOT CORRECTLY FILL OUT FORM, NEEDS MORE INFO",
+         "" ="WORK PERFORMED OUTSIDE VA; HIRED LAWYER",
+         "" ="WORKED IN WASHINGTON, DC",
+         "" ="CASE INVOLVES OVERTIME",
+         "" ="CLAIMANT WAS EMPLOYEE OF PUBLIC SCHOOL SYSTEM",
+         "" ="CLAIMANT NEVER DEMANDED WAGES",
+         "" ="CLAIM NOT SIGNED AND CLAIMANT SEEKING OVERTIME PAY",
+         "" ="CLAIMANT HIRED A LAWYER",
+         "" ="WRITTEN EMPLOYMENT AGREEMENT NOTED",
+         "" ="CLAIMANT HAS WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIMANT HAS NOT YET DEMANDED WAGES",
+         "" ="OVERPAID",
+         "" ="OVERPAYMENT",
+         "" ="CLAIMANT INCLUDED WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIMANT INCLUDED WRITTEN EMPLOYMENT AGREEMENT.",
+         "" ="CLAIMANT PERFORMED WORK IN DC",
+         "" ="CLAIMANT IS SELF EMPLOYED",
+         "" ="CLAIM PERIOD OVER 2 YEARS AGO AND CLAIMANT MARKED SELF EMPLOYED",
+         "" ="BUSINESS PARTNER",
+         "" ="WAGE ADVANCEMENT",
+         "" ="CLAIMANT DID NOT ATTACH, BUT INDICATED THEY HAD A WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIMANT INDICATED SHE HAS A WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIMANT INCLUDED A WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIMANT INDICATED HE HAS A WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIMANT IS SEEKING OVER 1 MILLION DOLLARS",
+         "" ="CONFLICTING DOCUMENTATION",
+         "" ="NO WORK PERFORMED",
+         "" ="FISCAL INTERMEDIARY",
+         "" ="CLAIMANT IS A GOVERNMENT WORKER",
+         "" ="CLAIMANT INDICATED SHE HAS A WRITTEN EMPLOYMENT AGREEMENT AND CLAIM OVER $15,000",
+         "" ="CLAIMANT SEEKING MONEY EARNED AS A TIPPED EMPLOYEE.",
+         "" ="CLAIMANT INDICATED THEY HAVE A WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIM FORM NOT SIGNED IN INK",
+         "" ="CLAIMANT NOTED THEY HAVE A WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIMANT INDICATED THEY HAD A WRITTEN EMPLOYMENT AGREEMENT AND WAS SELF-EMPLOYED",
+         "" ="CLAIMANT DID NOT GIVE A CLAIM AMOUNT",
+         "" ="CLAIMANT DID NOT SPECIFY A CLAIM RANGE AND CLAIM AMOUNT",
+         "" ="CLAIMANT HAS A WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIM AMOUNT IS OVER $15,000 AND CLAIM PERIOD IS OVER 2 YEARS OLD",
+         "" ="CLAIM FORM WAS COPIED",
+         "" ="OVERTIME",
+         "" ="CLAIMANT IS SELF EMPLOYED, HAS A WRITTEN EMPLOYMENT AGREEMENT, WORKED OUTSIDE VA",
+         "" ="CLAIMANT HAS WRITTEN EMPLOYMENT AGREEMENT AND WORKED ON MILITARY BASE",
+         "" ="CLAIMANT INDICATING SHE HAS A WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIMANT PROVIDED WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIMANT FILED IN COURT",
+         "" ="CLAIMANT IS A PUBLIC EMPLOYEE AND HAS A WRITTEN EMPLOYMENT AGREEMENT.",
+         "" ="CLAIMANT IS SELF-EMPLOYED.",
+         "" ="CLAIMANT INCLUDED A WRITTEN EMPLOYMENT AGREEMENT.",
+         "" ="CLAIMANT INDICATED HAVING A WRITTEN EMPLOYMENT AGREEMENT.",
+         "" ="WORK PERFORMED IN MD AND VA",
+         "" ="CLAIM INVOLVES TIPS",
+         "" ="WORKED IN MULTIPLE STATES",
+         "" ="WORK PERFORMED MORE THAN 2 YEARS AGO",
+         "" ="$15,000 CLAIM LIMIT",
+         "" ="CLAIMANT HAS A WRITTEN EMPLOYMENT AGREEMENT.",
+         "" ="WORK PERFORMED OUTSIDE OF VIRGINIA.",
+         "" ="CLAIMANT WAS A CORPORATE DIRECTOR.",
+         "" ="CLAIMANT IS SELF-EMPLOYED/HAD A WRITTEN AGREEMENT.",
+         "" ="CLAIMANT INDICATED HE HAD A WRITTEN EMPLOYMENT AGREEMENT.",
+         "" ="CLAIMANT INDICATED HE WAS SELF-EMPLOYED.",
+         "" ="CLAIM RELATES TO OVERTIME.",
+         "" ="WORK PERFORMED IN MULTIPLE STATES",
+         "" ="CLAIMANT PERFORMED WORK ON MILITARY INSTALLATIONS.",
+         "" ="CLAIMANT ALREADY FILED IN COURT.",
+         "" ="CLAIMANT PERFORMED WORK OUT OF STATE",
+         "" ="PERFORMED WORK OUTSIDE VIRGINIA.",
+         "" ="CLAIMANT SEEKING MINIMUM WAGE.",
+         "" ="CLAIMANT FILED IN COURT.",
+         "" ="DISCRETIONARY BONUS",
+         "" ="CLAIMANT SEEKING OT PAY.",
+         "" ="CLAIMANT IS A DIRECTOR, HAS A WRITTEN AGREEMENT. AND HIRED A LAWYER.",
+         "" ="CLAIMANT WAS SELF EMPLOYED.",
+         "" ="CLAIMANT SEEKING REGULAR TIME AND OVERTIME.",
+         "" ="CLAIMANT WAS SELF-EMPLOYED.",
+         "" ="CLAIMANT PERFORMED THE WORK IN MARYLAND.",
+         "" ="CLAIMANT INCLUDED A PARTIAL WRITTEN EMPLOYMENT AGREEMENT.",
+         "" ="CLAIMANT IS A TIPPED EMPLOYEE.",
+         "" ="CLAIMANT HAD A WRITTEN EMPLOYMENT AGREEMENT.",
+         "" ="CLAIMANT SEEKING OVERTIME PAY.",
+         "" ="CLAIMANT INDICATED HAVING A WRITTEN EMPLOYMENT AGREMEENT.",
+         "" ="CLAIMANT PERFORMED WORK IN MANY STATES",
+         "" ="CLAIMANT DID NOT INCLUDE A TIME PERIOD FOR UNPAID WAGES.",
+         "" ="OVERTIME CLAIM",
+         "" ="CLAIMANT FAILED TO PROVIDE A CLAIM PERIOD AND TOTAL.",
+         "" ="CLAIMANT INDICATED SHE HAD A WRITTEN EMPLOYMENT AGREEMENT.",
+         "" ="CLAIMANT PERFORMED WORK OUTSIDE VIRGINIA.",
+         "" ="CLAIM IS OVER 2 YEARS OLD.",
+         "" ="CLAIMANT DID NOT INCLUDE A TIME PERIOD OR CLAIM AMOUNT.",
+         "" ="CLAIMANT DID NOT INCLUDE A TIME PERIOD.",
+         "" ="CLAIMANT IS A GOVERNMENT EMPLOYEE.",
+         "" ="CLAIM INVOLVES OVERTIME",
+         "" ="CLAIMANT INDICATED HAVING A WRITTEN EMPLOMENT AGREEMENT.",
+         "" ="CLAIM INVOLVED OVERTIME.",
+         "" ="CLAIMANT HAS NOT DEMANDED WAGES",
+         "" ="CLAIMANT PERFORMED WORK ON FEDERAL PROPERTY.",
+         "" ="DID NOT DEMAND WAGES",
+         "" ="OUTSIDE SALES",
+         "" ="CLAIMANT INDICATED HE HAD A WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="INCLUDED WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="WORK WAS PERFORMED OUT OF THE STATE",
+         "" ="CLAIMANT INDICATED THAT HE WAS SELF EMPLOYED",
+         "" ="CLAIMANT INDICATED THEY HAD A WRITTEN EMPLOYMENT AGREEMENT.",
+         "" ="CLAIMANT ALREAD FILED IN COURT AGAINST THE EMPLOYER",
+         "" ="CLAIMANT IS SEEKING OVERTIME",
+         "" ="CLAIMANT PERFORMED THE WORK IN NORTH CAROLINA.",
+         "" ="PAY DATE HAS NOT YET PASSED",
+         "" ="CLAIM INVOLVES TIPS AND OVERTIME.",
+         "" ="CLAIMANT PERFORMED WORK ON A MILITARY BASE",
+         "" ="CLAIM INVOLVES OVERTIME.",
+         "" ="CLAIMANT DID NOT INDICATE THE TOTAL AMOUNT OF UNPAID WAGES.",
+         "" ="CLAIMANT HAD A WRITTEN EMPLOYMENT AGREEMENT AND HIRED A LAWYER",
+         "" ="CLAIMANT INDICATED THE FILED A COURT CASE FOR UNPAID WAGES.",
+         "" ="CLAIMANT DID NOT SIGN THE CLAIM FORM.",
+         "" ="CLAIMANT HAS A WRTTEN EMPLOYMENT AGREEMENT.",
+         "" ="CLAIM INVOLVING OVERTIME",
+         "" ="CLAIMANT WORKED FOR THIS BUSINESS AS A SELF-EMPLOYED PERSON.",
+         "" ="CLAIMANT WORKED ON A MILITARY INSTALLATION",
+         "" ="TOTAL GROSS AMOUNT OF UNPAID WAGES NOT INCLUDED",
+         "" ="EXCEEDS LIMIT FOR ACCEPTANCE",
+         "" ="WORK PERFORMED OUTSIDE VA",
+         "" ="CLAIMANT HAS FILED IN LOUDOUN COUNTY COURT",
+         "" ="FILED CASE WITH WISE GENERAL DISTRICT COURT",
+         "" ="CLAIMANT INDICATED SHE HAS A WRITTEN EMPLOYMENT AGREEMENT.",
+         "" ="CLAIMANT DID NOT DEMAND HIS UNPAID WAGES",
+         "" ="CLAIMANT ALREADY FILED IN COURT",
+         "" ="TOTAL GROSS AMOUNT OF UNPAID WAGES ARE NOT INCLUDED",
+         "" ="TOTAL AMOUNT OF UNPAID WAGES NOT INCLUDED",
+         "" ="CLAIMANT DID NOT DEMAND WAGES",
+         "" ="CLAIMANT SEEKING MINIMUM WAGE + TIPS",
+         "" ="CLAIMANT DID NOT UNCLUDE SIGNATURE",
+         "" ="CLAIMANT INDICATED THEY HAD A WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIMANT INDICATED HE WAS A CORPORATE DIRECTOR, OWNER OR PARTNER  IN BUSINESS",
+         "" ="CLAIMANT INDICATED SHE HAD A WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIMANT INDICATED HE WAS A CORPORATE DIRECTOR, OWNER OR PARTNER.",
+         "" ="CLAIMANT DID NOT INCLUDE THE TOTAL GROSS AMOUNT OF UNPAID WAGES",
+         "" ="CLAIMANT'S TOTAL GROSS AMOUNT EXCEEDS THE $15,000 LIMIT",
+         "" ="CLAIMANT DID NOT DEMAND THEIR WAGES",
+         "" ="MINIMUM WAGE",
+         "" ="CLAIMANT PERFORMED WORK IN TUSCON, AZ.",
+         "" ="CLAIMANT REQUESTED TIPS",
+         "" ="MINIMUM WAGE CLAIM",
+         "" ="CLAIMANT SEEKING OVERTIME PAY",
+         "" ="CLAIMANT IS SEEKING OVERTIME PAY",
+         "" ="CLAIMANT HAD A WRITTEN EMPLOYMENT AGREEMENT",
+         "" ="CLAIMANT DID NOT INCLUDE TOTAL GROSS AMOUNT OF UNPAID WAGES",
+         "" ="CLAIMANT SEEKING WAGES UNDER MINIMUM WAGE.",
+         "" ="CLAIMANT DID NOT INCLUDE TOTAL AMOUNT OF UNPAID WAGES",
+         "" ="CLAIMNANT'S SEEKING OVERTIME",
+         "" ="WRITTEN EMPLOYMENT AGREEMENT INCLUDED",
+         "" ="CLAIMANT HAS NOT BEEN PAID AT HIGHER RATE",
+         "" ="VOIDED SALES & SALES NOT MADE BY CLAIMANT",
+         "" ="COMPLAINANT DID NOT WORK HOURS CLAIMED.",
+         "" ="CLAIMANT WAS PAID FOR 80 HOURS THAT HE DID NOT WORK WHILE HOSPITALIZED. CLAIM WA",
+         "" ="EMPLOYER DOCUMENTATION SHOW CLAIMANT WAS PAID FOR ALL COMMISSIONS DUE",
+         "" ="OVERPAYMENT TO CLAIMANT",
+         "" ="NO JURISDICTION. ALL WORK WAS PERFORMED IN CONNECTICUT",
+         "" ="ACCORDING TO EMPLOYER SUBMITTED INFORMATION ALL WAGES HAVE BEEN PAID.",
+         "" ="CLAIMANT WAS OVERPAID BY EMPLOYER",
+         "" ="CLAIMANT WAS SUSPENDED BY EMPLOYER AND NOT ELIGIBLE TO BE PAID.",
+         "" ="CLAIMANT WAS PAID ALL WAGES OWED.",
+         "" ="CLAIMANT WAS PAID ALL WAGES PRIOR TO INVESTIGATION.",
+         "" ="CLAIMANT WAS PAID ALL WAGES BY EMPLOYER BEFORE CLAIM WAS MADE.",
+         "" ="CLAIMANT SUBMITTED NO DOCUMENTATION.",
+         "" ="CLAIMANT WAS ARRESTED FOR CRIME AGAINST THE BUSINESS.",
+         "" ="SEEKING MONIES FOR PROMISE OF A RAISE AFTER 90 DAYS",
+         "" ="EMPLOYER WAS RECOVERING ADVANCED LEAVE. DOCUMENTED.",
+         "" ="MONEY WAS LEGALLY TAKEN FROM HOURLY WAGE AND CLAIMANT WAS NOTIFIED BY EMPLOYER.",
+         "" ="EMPLOYER PROVIDED DOCUMENTATION OF EMPLOYEE OVERPAYMENT",
+         "" ="RECEIVED PTO PAY THAT COVERS OWED WAGES. WORKED IN WASHINGTON DC",
+         "" ="CLAIMANT HAS NO DOCUMENTATION OF TIME WORKED.",
+         "" ="DOCUMENTATION INDICATES CLAIMANT HAS BEEN PAID.",
+         "" ="RECEIVED DOCUMENTATION INDICATES CLAIMANT WAS PAID.",
+         "" ="WORK NOT PERFORMED IN VIRGINIA",
+         "" ="NO EMPLOYER/EMPLOYEE RELATIONSHIP",
+         "" ="CLAIMANT TOOK THE EMPLOYER TO COURT TO SETTLE.",
+         "" ="CLAIMANT WAS PAID CORRECTLY DUE TO OUTSTANDING DRAWS"))
+```
+

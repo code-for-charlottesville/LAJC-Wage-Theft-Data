@@ -39,57 +39,32 @@ One version of a cleaned dataset is also stored here, as **lajc_clean.csv**.
 ## Goals
 Here's a list of the immediate goals the LAJC wants us to work on. Feel free to focus on one of them, or more if you have time. Also, as you work on the data, you might have ideas for additional goals, and **you should feel free to pursue your ideas.**
 
-### Goal 1: Create a map dividing Virginia into eight regions, showing the number/% of cases where the employer is located in each region.
-Please use the demographic regions used by UVA’s Cooper Center for Public Service, available here https://demographics.coopercenter.org/virginia-regions. (Also note the number/% of cases where the employer is out of state, and the number/% of cases where the employer’s location can’t be determined.)
+### Goal 1: Let’s understand the GEOGRAPHIC distribution of where the complaints come from.
+Deliverables:
 
-### Goal 2: A table showing a comprehensive overview of the reasons that DOLI has rejected cases over the last five years.
-For each reason, we’d like to know the number of cases dismissed on this basis (for example: "47 cases were dismissed because the worker worked some overtime"). (Some cases have more than one reason for dismissal.)
+* Clean up the cities/counties for the employer and complainant
 
-This unfortunately may require a human being to look over the various reasons for dismissal listed in the “Other” columns (columns 21 and 31) and determine how to code each one. This may require a little independent judgment in some cases. For example, DOLI will reject a case if the worker is seeking over $15,000. One DOLI investigator may note this as "$15,000 limit," while another may write "exceeds maximum claim amount." 
+* A good-looking table of the most frequent cities/counties for the employer and complainant
 
-The reasons for dismissal that LAJC is most interested are these:
-  * The business is closed / out of business (this is different from “business bankrupt”)
-  * The worker had a written employment agreement
-  * The worker worked overtime in at least one week
-  * The work was performed outside of Virginia
-  * The worker is seeking tips or was a tipped employee
-  * The claim amount is over $15,000  
-  * The worker hired an attorney (this is different from “the worker filed a lawsuit”)
-  * The worker did not demand the wages from the employer before filing a complaint with DOLI
-  * The worker was an independent agent/subcontractor/self-employed or DOLI was otherwise unable to establish an employer-employee relationship
-  * Errors with the claim form (e.g. the form was incomplete, or the worker didn’t provide an exact claim amount, or the worker signed in pencil rather than in pen, etc.)
-  * The claim seeks minimum wages
-  * But please track the other reasons as well! (E.g., complainant can’t be found / worker dropped or withdrew their claim / worker got paid / 2-year statute of limitations / insufficient documentation to proceed, etc.)
+* A map where you can see how many complaining workers/employers are located in each city/county
 
-### Goal 3: A figure or table to tell us about case duration (Open Date to Case Closed)
-LAJC is particularly interested in:
 
-  * How many cases closed the same day they were opened
-  * Average/median/modal length of time each case is open
-  * Longest amount of time that any case was open
-  * Distribution of case duration (for cases that were not closed the same day they were open)
+### Goal 2: Let’s understand the REASONS why wage theft claims are rejected.
+Deliverables:
 
-    * 1-10 days open
-    * 11-31 days open
-    * 32-90 days open
-    * 91-120 days open
-    * Over 120 days open
+* Categorize the many reasons in the “other” field
 
-### Goal 4: A figure or table to tell us about case processing
-  * Number/% of cases closed after a first-response investigation
-  * Number/% of cases closed after a formal investigation, or an informal investigation
-  * Number/% of cases closed after a settlement conference
-  * Wage Orders issued
-  * Cases sent to collections/amounts recovered
-  * Number of cases where DOLI took the employer to court (civil or criminal)
+* A good-looking table of the frequency of reasons, after the “other” reasons have been categorized
 
-### Goal 5: A figure or table to tell us about money recovered
-  * Number/% of cases where DOLI recovered some money for the worker
-  * In cases where DOLI recovers some money, what’s the average/mean/modal amount recovered? (in terms of wages, interest, and wages-plus-interest).
-  * If possible, I’d also like to see this data broken down by each year. (For example, if DOLI recovered all these wages in 2017 and recovered nothing in the other years, that’d be interesting to know).
+* Another table showing (1) how many claims DOLI has rejected on that basis during the last five years and (2) the total amount of stolen wages that DOLI refused to pursue on that basis.  
 
-### Goal 6: Some way to make the data publicly accessible/searchable/manipulable**, possibly through a web-based platform.
-                       
+
+### Goal 3: A tool that would let people sort and interact with the data themselves 
+(Say, something that would let you search for information about all wage claims from Henrico County, or all wage claims filed in 2017, or wage claims made by workers or against employers in a particular Virginia state legislative district).
+
+Deliverables:
+
+* A web-app that the LAJC can use 
 
 ## How to Use GitHub
 ### If you are already familiar with GitHub (and Git)

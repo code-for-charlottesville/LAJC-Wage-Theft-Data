@@ -1,0 +1,176 @@
+---
+title: "Analysis of Reasons for Claim Dismissal"
+author: "Code for Charlottesville"
+date: "10/15/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this document, we address the following goal:
+
+### Goal: Let’s understand the REASONS why wage theft claims are rejected.
+Deliverables:
+
+* Categorize the many reasons in the “other” field
+
+* A good-looking table of the frequency of reasons, after the “other” reasons have been categorized
+
+* Another table showing (1) how many claims DOLI has rejected on that basis during the last five years and (2) the total amount of stolen wages that DOLI refused to pursue on that basis.  
+
+We worked to categorize all of the reasons typed into the "other" fields for in valid and undetermined claims. Our spreadsheet with this work is here: https://docs.google.com/spreadsheets/d/1M6SJ08PV-oYjN6LbwtC_3C4XvPbVX5f8i9cIwk2WzfU/edit?usp=sharing
+
+## Technical Data Cleaning Stuff
+Please ignore the following code:
+```{r tech, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(lubridate)
+library(knitr)
+
+lajc <- read_csv("lajc_wage_claim.csv")
+
+lajc <- lajc %>%
+  rename(claimID = `CLAIM NO`,
+         employer = `EMPLOYER NAME`,
+         employercity = `EMPLOYER CITY`,
+         employerstate = ST,
+         employerzip = ZIP,
+         complainantcity = `COMPLAINANT CITY`,
+         complainantrstate = ST_1,
+         complainantrzip = ZIP_1,
+         claim_amount = `CLAIM AMT`,
+         case_open = `CASE OPEN/RE-OPEN`,
+         valid = Valid,
+         invalid = Invalid,
+         verified_claim = `VERIFIED CLAIM AMT`,
+         case_close = `CASE CLOSE/RECLOSE DATE`,
+         first_response = `1st Response Investigation`,
+         formal_investigate = `Formal Investigation`,
+         wage_order = `Wage Order`,
+         total_rec = `TOT AMT`,
+         wage_rec = `WAGE AMT`) %>%
+  dplyr::select(claimID, starts_with("employer"), gender, hispanic, asian, claim_amount, case_open, valid, 
+         invalid, verified_claim, case_close, first_response, formal_investigate, wage_order, total_rec, 
+         wage_rec, -starts_with("EMPLOYER ")) %>%
+  mutate(gender = factor(gender),
+         claim_amount = substring(claim_amount, 2),
+         verified_claim = substring(verified_claim, 2),
+         total_rec = substring(total_rec, 2),
+         wage_rec = substring(wage_rec, 2),
+         claim_amount = str_remove(claim_amount, ","),
+         verified_claim = str_remove(verified_claim, ","),
+         total_rec = str_remove(total_rec, ","),
+         wage_rec = str_remove(wage_rec, ","),
+         claim_amount = as.numeric(claim_amount),
+         verified_claim = as.numeric(verified_claim),
+         total_rec = as.numeric(total_rec),
+         wage_rec = as.numeric(wage_rec),
+         case_open = dmy(case_open),
+         case_close = dmy(case_close),
+         duration = case_close - case_open,
+         valid = (valid == "X"),
+         invalid = (invalid == "X"),
+         first_response = (first_response == "X"),
+         formal_investigate = (formal_investigate == "X"),
+         wage_order = (wage_order == "X"),
+         valid = ifelse(is.na(valid), FALSE, valid),
+         invalid = ifelse(is.na(invalid), FALSE, invalid),
+         first_response = ifelse(is.na(first_response), FALSE, first_response),
+         wage_order = ifelse(is.na(wage_order), FALSE, wage_order),
+         formal_investigate = ifelse(is.na(formal_investigate), FALSE, formal_investigate))
+
+write_csv(lajc, path="lajc_clean.csv")
+
+reasons <- read_csv("Reasons Unmapped - Category Counts.csv", col_names = c("claimID", "reason"))
+lajc <- full_join(lajc, reasons)
+
+lajc_invalid <- filter(lajc, invalid)
+lajc_undetermined <- filter(lajc, !invalid & !is.na(reason))
+```
+
+## The reasons cited by DOLI
+Here are reasons cited by DOLI for determining a claim to be invalid:
+```{r invalcount, fig.width=10, fig.height=6}
+lajc_invalid_bar <- lajc_invalid %>% 
+  group_by(reason) %>%
+  summarize(count = n()) %>%
+  na.omit()
+g <- ggplot(lajc_invalid_bar, aes(x = reorder(reason, count), y=count)) + 
+  geom_bar(stat="identity") +
+  geom_text(aes(label=count), hjust=0) +
+  coord_flip() +
+  xlab("Reason") +
+  ylab("Number of complaints marked invalid for this reason") +
+  theme(text=element_text(family="serif")) 
+g
+```
+
+Here are reasons cited by DOLI for determining a claim to be undetermined:
+```{r undcount, fig.width=10, fig.height=6}
+lajc_undetermined_bar <- lajc_undetermined %>% 
+  group_by(reason) %>%
+  summarize(count = n()) %>%
+  na.omit()
+g <- ggplot(lajc_undetermined_bar, aes(x = reorder(reason, count), y=count)) + 
+  geom_bar(stat="identity") +
+  geom_text(aes(label=count), hjust=0) +
+  coord_flip() +
+  xlab("Reason") +
+  ylab("Number of complaints marked undetermined for this reason") +
+  theme(text=element_text(family="serif")) 
+g
+```
+
+## Amount claimed by reason
+Here are the average and total amounts claimed by reason for finding a claim invalid:
+```{r claimedinval}
+lajc_invalid_claimed <- lajc_invalid %>%
+  group_by(reason) %>%
+  summarize(`Frequency of reason` = n(),
+            `Total wages claimed` = sum(claim_amount),
+            `Average wages claimed` = mean(claim_amount)) %>%
+  na.omit() %>%
+  rename(Reason = reason) %>%
+  arrange(-`Total wages claimed`)
+kable(lajc_invalid_claimed)
+```
+
+Here are the average and total amounts claimed by reason for finding a claim undetermined:
+```{r claimedund}
+lajc_undetermined_claimed <- lajc_undetermined %>%
+  group_by(reason) %>%
+  summarize(`Frequency of reason` = n(),
+            `Total wages claimed` = sum(claim_amount),
+            `Average wages claimed` = mean(claim_amount)) %>%
+  na.omit() %>%
+  rename(Reason = reason) %>%
+  arrange(-`Total wages claimed`)
+kable(lajc_undetermined_claimed)
+```
+
+## Duration of cases by reason
+Here are the average and total amount of time between the opening and closing of each case by reason for finding a claim invalid:
+```{r durinval}
+lajc_invalid_claimed <- lajc_invalid %>%
+  group_by(reason) %>%
+  summarize(`Frequency of reason` = n(),
+            `Average duration` = mean(duration)) %>%
+  na.omit() %>%
+  rename(Reason = reason) %>%
+  arrange(-`Average duration`)
+kable(lajc_invalid_claimed)
+```
+
+Here are the average and total amount of time between the opening and closing of each case by reason for finding a claim undetermined:
+```{r durund}
+lajc_undetermined_claimed <- lajc_undetermined %>%
+  group_by(reason) %>%
+  summarize(`Frequency of reason` = n(),
+            `Average duration` = mean(duration)) %>%
+  na.omit() %>%
+  rename(Reason = reason) %>%
+  arrange(-`Average duration`)
+kable(lajc_undetermined_claimed)
+```

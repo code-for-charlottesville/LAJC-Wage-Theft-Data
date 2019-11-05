@@ -4,7 +4,7 @@ Our slides for tonight: https://tinyurl.com/CFCslides
 
 # Legal Aid Justice Center (LAJC) Wage-Theft Data
 
-**Project Status:** Active
+**Project Status:** Hack nights completed, now working in a small working group. Contact Jon Kropko (jkropko@codeforcharlottesville.org) to join the group
 
 **Links:**
 

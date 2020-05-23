@@ -74,6 +74,6 @@ vboxapi==1.0
 virtualenv==16.7.5
 virtualenv-clone==0.5.3
 wcwidth==0.1.7
-Werkzeug==0.15.2
+Werkzeug==0.15.3
 yapf==0.28.0
 zipp==0.5.2

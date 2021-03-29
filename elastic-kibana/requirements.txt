@@ -50,7 +50,7 @@ prometheus-client==0.6.0
 py==1.8.0
 pyasn1==0.4.4
 pycrypto==2.6.1
-Pygments==2.4.2
+Pygments==2.7.4
 pygobject==3.26.1
 PyInstaller==3.5
 pyparsing==2.4.2
